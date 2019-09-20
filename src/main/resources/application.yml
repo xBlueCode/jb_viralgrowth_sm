@@ -1,0 +1,21 @@
+#Spring JPA
+## Spring DATASOURCE (DataSourceAutoConfiguration & DataSourceProperties)
+spring:
+  datasource:
+    url: jdbc:h2:mem:vg_sm
+    username: xbc_u
+    password: xbc_p
+  h2:
+    console:
+      enabled: true
+  jpa:
+    properties:
+      dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+#      hibernate:
+#        jdbc:
+#          time_zone: +03:00
+    hibernate:
+      ddl-auto: update # create
+    database: h2 # mysql
+server:
+  port: 8080
