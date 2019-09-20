@@ -10,19 +10,14 @@ import xbc.jb.socialvg.refinv.domain.User;
 import java.util.Optional;
 
 @Controller
-@RequestMapping("/dashboard")
-public class DashboardController {
-
+@RequestMapping("/test")
+public class TestController {
 	@Autowired
 	private UserSecurityUtil userSecurityUtil;
 
-	@GetMapping
-	public String dashboard()
+	@GetMapping("/grids")
+	public String grids()
 	{
-		Optional<User> opUser = userSecurityUtil.getAuthenticatedUser();
-		if (opUser.isPresent())
-			return "dashboard";
-		else
-			return "redirect:/";
+		return "grids";
 	}
 }

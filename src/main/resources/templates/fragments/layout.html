@@ -1,0 +1,42 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+
+<html th:fragment="layout (template, menu)">
+
+<head>
+	<meta charset="utf-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" th:href="@{/css/grids.css}"/>
+</head>
+
+<body>
+<!-- Start, Nav Bar -->
+<nav>
+	<div class="card navbar">
+		<div class="logo"> JetBridge</div>
+		<div class="navlist">
+			<ul class="ulnav">
+				<li class="linav"><a href="#top-page" class="anav">HOME</a></li>
+				<li class="linav"><a href="" class="anav">PROJECTS</a></li>
+				<li class="linav"><a href="" class="anav">ABOUT</a></li>
+				<li class="linav"><a id="fb" href="" class="anav">fb</a></li>
+			</ul>
+		</div>
+	</div>
+</nav>
+<!-- End, Nav Bar -->
+<div class="title-container card">
+	<h1 class="title ">
+		CSS Grids Tutorial
+	</h1>
+</div>
+<br/>
+<div>
+	<div class="showcase card">
+		<th:block th:include="${template}"/>
+	</div>
+</div>
+
+</body>
+
+<html>
