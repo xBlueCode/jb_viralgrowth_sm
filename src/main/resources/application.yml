@@ -15,7 +15,7 @@ spring:
 #        jdbc:
 #          time_zone: +03:00
     hibernate:
-      ddl-auto: update # create
+      ddl-auto: create # create, update
     database: h2 # mysql
 server:
   port: 8080

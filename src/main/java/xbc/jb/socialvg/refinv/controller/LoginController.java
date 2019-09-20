@@ -13,19 +13,19 @@ import java.util.Optional;
  *
  */
 @Controller
-@RequestMapping("/")
-public class HomeController {
+@RequestMapping("/login")
+public class LoginController {
 
-    @Autowired
-    private UserSecurityUtil userSecurityUtil;
+	@Autowired
+	private UserSecurityUtil userSecurityUtil;
 
-    @GetMapping
-    public String home()
-    {
-        Optional<User> opUser = userSecurityUtil.getAuthenticatedUser();
-        if (!opUser.isPresent())
-            return "home";
-        else
-            return "redirect:/dashboard";
-    }
+	@GetMapping
+	public String login()
+	{
+		Optional<User> opUser = userSecurityUtil.getAuthenticatedUser();
+		if (opUser.isPresent())
+			return "redirect:/dashboard";
+		else
+			return "login";
+	}
 }

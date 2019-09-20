@@ -9,23 +9,21 @@ import xbc.jb.socialvg.refinv.domain.User;
 
 import java.util.Optional;
 
-/**
- *
- */
 @Controller
-@RequestMapping("/")
-public class HomeController {
+@RequestMapping("/dashboard")
+public class DashboardController {
 
-    @Autowired
-    private UserSecurityUtil userSecurityUtil;
+	@Autowired
+	private UserSecurityUtil userSecurityUtil;
 
-    @GetMapping
-    public String home()
-    {
-        Optional<User> opUser = userSecurityUtil.getAuthenticatedUser();
-        if (!opUser.isPresent())
-            return "home";
-        else
-            return "redirect:/dashboard";
-    }
+	@GetMapping
+	public String dashboard()
+	{
+		Optional<User> opUser = userSecurityUtil.getAuthenticatedUser();
+		if (opUser.isPresent())
+			return "dashboard";
+		else
+			return "redirect:/";
+	}
+
 }
