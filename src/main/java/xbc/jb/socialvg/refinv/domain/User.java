@@ -6,6 +6,7 @@ import org.hibernate.validator.constraints.Length;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.util.Collection;
@@ -29,8 +30,14 @@ public class User implements UserDetails {
     private String username;
 
     @NotEmpty
+    @Column(unique = true)
+    private String email;
+
+    @NotEmpty
     @Length(min = 4)
     private String password;
+
+    private String iCode;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -69,5 +76,25 @@ public class User implements UserDetails {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getiCode() {
+        return iCode;
+    }
+
+    public void setiCode(String iCode) {
+        this.iCode = iCode;
     }
 }

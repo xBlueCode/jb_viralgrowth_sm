@@ -1,16 +1,48 @@
 <!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org"
-      th:replace="~{fragments/layout :: layout (~{::body},'dashboard')}">
-<body>
-<ul>
-    <li>
-        <a href="/dashboard/refer">Refer and earn</a>
-    </li>
-    <li>
-        <a href="/logout">Logout</a>
-    </li>
-</ul>
+			xmlns:th="http://www.thymeleaf.org"
+			th:replace="~{fragments/layout :: layout (~{::body},'dashboard')}">
+<head>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/layout.css}"/>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/grid.css}"/>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/component.css}"/>
+</head>
+<body >
+<div class="abs login-container">
+	<div>
+		<div class="showcase card card-colored-0" onresize="onresizeTask()">
+			<div class="showcase-title">
+				<h2>Welcome Back</h2>
+			</div>
+			<div class="showcase-container">
+				<div class="card-nosh card-element Without-grids">
+					<div class="form-container">
+						<div class="form-field">
+							<input name='username' placeholder='Username' type='text'>
+						</div>
+						<div class="form-field">
+							<input id='pw' name='password' placeholder='Password' type='password'>
+						</div>
+						<div class="form-field">
+							<input class="card button" type='submit' value='Sign in'>
+						</div>
+						<a class='forgot' href='/login'>By signing up, you agree to our Terms , Data Policy and Cookies Policy </a>
+						<a class='forgot' href='/login'>Already have an account?</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--<ul>-->
+	<!--    <li>-->
+	<!--        <a href="/dashboard/refer">Refer and earn</a>-->
+	<!--    </li>-->
+	<!--    <li>-->
+	<!--        <a href="/logout">Logout</a>-->
+	<!--    </li>-->
+	<!--</ul>-->
+</div>
 </body>
 </html>

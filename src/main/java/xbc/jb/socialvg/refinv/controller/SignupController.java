@@ -19,8 +19,8 @@ import java.util.Optional;
  *
  */
 @Controller
-@RequestMapping("/register")
-public class RegisterController {
+@RequestMapping("/signup")
+public class SignupController {
 
     @Autowired
     private UserServiceDb userServiceDb;
@@ -29,23 +29,26 @@ public class RegisterController {
     private UserSecurityUtil userSecurityUtil;
 
     @GetMapping
-    public String showRegisterForm(Model model)
+    public String showSignupForm(Model model)
     {
         Optional<User> opUser = userSecurityUtil.getAuthenticatedUser();
         if (opUser.isPresent())
             return "redirect:/dashboard";
         model.addAttribute("user", new User());
-        return "register";
+        return "signup";
     }
 
     @PostMapping
-    public String register(@ModelAttribute("user") @Valid User user, BindingResult bindingResult)
+    public String signup(@ModelAttribute("user") @Valid User user, BindingResult bindingResult)
     {
         if (userServiceDb.findUserByUsername(user.getUsername()).isPresent())
-            bindingResult.rejectValue("username", null, "There is already an account with that username !");
+            bindingResult.rejectValue(
+                    "username",
+                    null,
+                    "There is already an account with that username !");
 		if (bindingResult.hasErrors())
-			return "register";
+			return "signup";
 		userServiceDb.save(user);
-		return "redirect:/login";
+		return "redirect:/signin";
     }
 }

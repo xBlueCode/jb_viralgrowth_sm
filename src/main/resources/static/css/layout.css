@@ -1,0 +1,24 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    min-height: 100%;
+}
+
+body {
+    padding: 10px;
+    background: #0277BD; /* overriden */
+    background: -webkit-gradient(linear, left top, right bottom, from(#c26bd6), to(#3123ae));
+    background: linear-gradient(to bottom right, #c26bd6 0%, #3123ae 100%);
+
+    /*background: #444;*/
+    font-family: 'lato', sans-serif ;
+    max-width: 1200px;
+    margin: 60px auto 0 auto;
+}
+
+.abs {
+    position: relative;
+}

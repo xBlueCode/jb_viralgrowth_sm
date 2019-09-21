@@ -24,7 +24,7 @@ public class HomeController {
     {
         Optional<User> opUser = userSecurityUtil.getAuthenticatedUser();
         if (!opUser.isPresent())
-            return "home";
+            return "index";
         else
             return "redirect:/dashboard";
     }

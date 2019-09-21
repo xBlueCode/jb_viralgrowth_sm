@@ -1,0 +1,65 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+			xmlns:th="http://www.thymeleaf.org"
+			th:replace="~{fragments/layout :: layout (~{::body},'dashboard')}">
+<head>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/layout.css}"/>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/grid.css}"/>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/component.css}"/>
+</head>
+<body>
+<div class="abs login-container">
+	<div>
+		<div class="showcase card card-colored-0" onresize="onresizeTask()">
+			<div class="showcase-title">
+				<h2>Join Us !</h2>
+			</div>
+			<div class="showcase-container">
+				<div class="card-nosh card-element Without-grids">
+					<form action="#" th:action="@{/register}" th:method="post" th:object="${user}">
+						<div class="form-container">
+							<div class="form-field">
+								<input name='username' placeholder='Username' type='text' th:field="*{username}">
+							</div>
+							<div class="form-field">
+								<input name='email' placeholder='Email' type='email' th:field="*{email}">
+							</div>
+							<div class="form-field">
+								<input id='pw' name='password' placeholder='Password' type='password' th:field="*{password}">
+							</div>
+							<div class="form-field">
+								<input name='icode' placeholder='Invitation Code' type='text' th:field="*{iCode}">
+							</div>
+							<div class="form-field">
+								<input class="card-nosh button box-sh" type='submit' value='Sign up'>
+							</div>
+							<div class="form-field">
+								<a class="forgot" href="#">By signing up, you agree to our Terms , Data Policy and Cookies Policy.</a>
+							</div>
+							<div class="form-field">
+								<a class='forgot' href='/signin'>Already have an account?</a>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<!--	<div class="abs showcase card">-->
+<!--		<div>-->
+<!--			Hello world-->
+<!--		</div>-->
+	</div>
+	<!--<ul>-->
+	<!--    <li>-->
+	<!--        <a href="/dashboard/refer">Refer and earn</a>-->
+	<!--    </li>-->
+	<!--    <li>-->
+	<!--        <a href="/logout">Logout</a>-->
+	<!--    </li>-->
+	<!--</ul>-->
+</div>
+</body>
+</html>

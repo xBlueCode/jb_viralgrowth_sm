@@ -19,10 +19,13 @@ public class DashboardController {
 	@GetMapping
 	public String dashboard()
 	{
+		/*
 		Optional<User> opUser = userSecurityUtil.getAuthenticatedUser();
 		if (opUser.isPresent())
 			return "dashboard";
 		else
 			return "redirect:/";
+		 */
+		return "dashboard";
 	}
 }

@@ -1,23 +1,6 @@
-
-body {
-	padding: 10px;
-	background: #0277BD; /* overriden */
-    background: -webkit-gradient(linear, left top, right bottom, from(#c26bd6), to(#3123ae));
-    background: linear-gradient(to bottom right, #c26bd6 0%, #3123ae 100%);
-    
-    background: #444;
-	font-family: 'lato', sans-serif ;
-	max-width: 1200px;
-	margin: 60px auto 0 auto;
-}
-
 header {
 	margin: 0;
 	
-}
-
-content {
-	margin: 10px;
 }
 
 .title-container {
@@ -104,31 +87,38 @@ a[id="fb"]{
 	/*border: 1px solid #000;  /* to be deleted */
 }
 
-.card {
+.card-nosh, .card {
 	border-radius: 3px;
-	background: rgba(236, 240, 241,1.0);
-    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.21);
-    box-shadow: 0 3px 5px rgba(0,0,0,0.16), 0 3px 5px rgba(0,0,0,0.23);
-	
+	/*background: rgba(236, 240, 241,1.0);*/
 }
 
-	.navbar{
-		display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        transition: flex-wrap 1s ease;
-		grid-template-columns: 180px 2fr;
-		background: #222; /* rgba(44, 62, 80,1.0); */
-		width: 100%;
-		position: fixed;
-		top: 0;
-		left: 0;
-		z-index: 10;
-		border-radius: 0;
-		margin: 0 0 48px 0;
-		padding: 10px;
+.card {
+    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.21);
+    box-shadow: 0 3px 5px rgba(0,0,0,0.16), 0 3px 5px rgba(0,0,0,0.23);
+}
 
-	}
+.box-sh {
+	box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.21);
+	box-shadow: 0 3px 5px rgba(0,0,0,0.16), 0 3px 5px rgba(0,0,0,0.23);
+}
+
+.navbar {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	transition: flex-wrap 1s ease;
+	grid-template-columns: 180px 2fr;
+	background: #222; /* rgba(44, 62, 80,1.0); */
+	width: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 10;
+	border-radius: 0;
+	margin: 0 0 48px 0;
+	padding: 10px;
+
+}
 
 .card-element {
 	display: grid;
@@ -139,10 +129,10 @@ a[id="fb"]{
 	vertical-align: center;
 	align-content: center;
 	position: relative;
-	transition: opacity .2s ease;
+	/*transition: opacity .2s ease;*/
 }
 .card-element:hover{
-	opacity: .9;
+	/*opacity: .9;*/
 }
 
 .width-bar{
@@ -158,6 +148,10 @@ a[id="fb"]{
 	content: 
 }
 */
+
+.card-colored-0{
+	background: #fff;
+}
 .card-colored-1{
 	background: rgba(231, 76, 60,1.0);
 	color: #fff;

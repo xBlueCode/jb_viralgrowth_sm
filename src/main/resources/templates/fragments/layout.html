@@ -6,14 +6,16 @@
 	<meta charset="utf-8"/>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 	<link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" th:href="@{/css/grids.css}"/>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/layout.css}"/>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/grid.css}"/>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/component.css}"/>
 </head>
 
-<body>
+<body id="top-page">
 <!-- Start, Nav Bar -->
 <nav>
 	<div class="card navbar">
-		<div class="logo"> JetBridge</div>
+		<div class="logo"> xBlueCode</div>
 		<div class="navlist">
 			<ul class="ulnav">
 				<li class="linav"><a href="#top-page" class="anav">HOME</a></li>
@@ -24,19 +26,11 @@
 		</div>
 	</div>
 </nav>
-<!-- End, Nav Bar -->
-<div class="title-container card">
-	<h1 class="title ">
-		CSS Grids Tutorial
-	</h1>
-</div>
-<br/>
-<div>
-	<div class="showcase card">
-		<th:block th:include="${template}"/>
-	</div>
-</div>
 
+<!-- End, Nav Bar -->
+<div >
+	<th:block th:include="${template}"/>
+</div>
 </body>
 
 <html>
