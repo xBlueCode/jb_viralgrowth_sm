@@ -23,8 +23,8 @@ import java.util.Optional;
  *
  */
 @Controller
-@RequestMapping("/signin")
-public class SigninController {
+@RequestMapping("/signout")
+public class SignoutController {
 
 	private Logger logger = LoggerFactory.getLogger(SigninController.class);
 
@@ -35,19 +35,16 @@ public class SigninController {
 	public String showSigninForm(Model model)
 	{
 		Optional<User> opUser = userSecurityService.getAuthenticatedUser();
-		if (opUser.isPresent())
-			return "redirect:/dashboard";
-		model.addAttribute("user", new User());
-		return "/signin";
+		if (!opUser.isPresent())
+			return "redirect:/";
+		//model.addAttribute("user", new User());
+		return "/signout";
 	}
 
 	@PostMapping
-	public String signin(@ModelAttribute("user") User user, BindingResult bindingResult) {
-		System.out.println("---------------------------+++++");
-		logger.info(String.format("Signing in ...: %s", user.getUsername()));
-		if (userSecurityService.authenticate(user))
-			return "redirect:/dashboard";
-		else
-			return "signin";
+	public String signin(HttpServletRequest httpServletRequest) {
+		logger.info(String.format("Signing out ..."));
+		httpServletRequest.getSession().invalidate();
+		return "redirect:/signin";
 	}
 }

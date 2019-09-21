@@ -13,11 +13,17 @@
 	<div>
 		<div class="showcase card card-colored-0" onresize="onresizeTask()">
 			<div class="showcase-title">
-				<h2>Dashboard</h2>
+				<h2>Sign out</h2>
 			</div>
 			<div class="showcase-container">
 				<div class="card-nosh card-element Without-grids">
-					<a class='forgot' href='/signout'>Sign out</a>
+					<form action="#" th:action="@{/signout}" th:method="post">
+						<div class="form-container">
+							<div class="form-field">
+								<input class="card-nosh button box-sh" type='submit' value='Sign out'>
+							</div>
+						</div>
+					</form>
 				</div>
 			</div>
 		</div>

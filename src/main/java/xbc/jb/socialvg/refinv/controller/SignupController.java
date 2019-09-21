@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import xbc.jb.socialvg.refinv.config.UserSecurityUtil;
+import xbc.jb.socialvg.refinv.config.UserSecurityService;
 import xbc.jb.socialvg.refinv.domain.User;
 import xbc.jb.socialvg.refinv.service.UserServiceDb;
 
@@ -26,12 +26,12 @@ public class SignupController {
     private UserServiceDb userServiceDb;
 
     @Autowired
-    private UserSecurityUtil userSecurityUtil;
+    private UserSecurityService userSecurityService;
 
     @GetMapping
     public String showSignupForm(Model model)
     {
-        Optional<User> opUser = userSecurityUtil.getAuthenticatedUser();
+        Optional<User> opUser = userSecurityService.getAuthenticatedUser();
         if (opUser.isPresent())
             return "redirect:/dashboard";
         model.addAttribute("user", new User());
@@ -49,6 +49,7 @@ public class SignupController {
 		if (bindingResult.hasErrors())
 			return "signup";
 		userServiceDb.save(user);
+        System.out.println("saved ++++++++++++++++++++++++");
 		return "redirect:/signin";
     }
 }

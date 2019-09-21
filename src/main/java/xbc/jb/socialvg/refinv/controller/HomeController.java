@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import xbc.jb.socialvg.refinv.config.UserSecurityUtil;
+import xbc.jb.socialvg.refinv.config.UserSecurityService;
 import xbc.jb.socialvg.refinv.domain.User;
 
 import java.util.Optional;
@@ -17,12 +17,12 @@ import java.util.Optional;
 public class HomeController {
 
     @Autowired
-    private UserSecurityUtil userSecurityUtil;
+    private UserSecurityService userSecurityService;
 
     @GetMapping
     public String home()
     {
-        Optional<User> opUser = userSecurityUtil.getAuthenticatedUser();
+        Optional<User> opUser = userSecurityService.getAuthenticatedUser();
         if (!opUser.isPresent())
             return "index";
         else

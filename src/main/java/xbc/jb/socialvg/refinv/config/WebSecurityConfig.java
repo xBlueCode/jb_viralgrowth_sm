@@ -51,6 +51,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
+        //AuthenticationManager authenticationManager
     }
 
     @Override
@@ -65,12 +66,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
         http
                 .authorizeRequests()
-                .antMatchers("/", "/signup").permitAll()
-                //.anyRequest().authenticated()
-                .and()
-                .formLogin()
-				.loginPage("/signin")
-                .successHandler(successHandler())
+                .antMatchers("/", "/signup", "/signin", "/css/**").permitAll()
+                .anyRequest().authenticated()
+        //.and
+                //.formLogin()
+				//.loginPage("")
+                //.permitAll()
+                //.successHandler(successHandler())
                 //.defaultSuccessUrl("/dashboard", true)
                 ;
 
