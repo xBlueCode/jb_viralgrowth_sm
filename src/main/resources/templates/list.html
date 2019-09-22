@@ -18,11 +18,33 @@
 <!--				<p>Using auto-fit and minmax()</p>-->
 			</div>
 
-			<div class="showcase-container grid fgrid">
+			<div class="showcase-container grid fgrid ">
 				<div th:each="user : ${list}">
-					<div class="card card-element card-colored-1 fcard "> <div class="width-bar"> 640 px</div>1</div>
+					<div class="card card-element card-colored-1 fcard ">
+						<p class="form-label" th:text="${user.username}"></p>
+						<br/>
+						<p class="form-label" th:text="${user.email}"></p>
+						<br/>
+						<p class="form-label" th:text="${user.iCode}"></p>
+						<br/>
+					</div>
 				</div>
 			</div>
+			<p class="form-label" id="pagen" th:text="${#request.getParameter('page')}"></p>
+			<button id="page_prev" onclick="paginate(this)">Prev</button>
+			<button id="page_next" onclick="paginate(this)">Prev</button>
+			<script>
+				function paginate(paction)
+				{
+						var pagen = parseInt(document.getElementById('pagen').innerText);
+						pagen += 1 - 2 * (paction.id == "page_prev");
+						if (pagen > -1)
+						{
+						    const url = '/list?page=' + pagen;
+						    location.replace(url);
+						}
+				}
+			</script>
 		</div>
 	</div>
 
