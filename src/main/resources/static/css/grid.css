@@ -100,7 +100,12 @@ a[id="fb"]{
 .fcard {
 	min-width: 128px;
 	min-height: 256px;
-	margin: 8px
+	margin: 8px;
+	/*transition: all 1s ease;*/
+}
+
+.card-op-survive {
+	animation: survive 1s ease .0s 1 forwards;
 }
 
 .box-sh {
@@ -272,22 +277,39 @@ a[id="fb"]{
 	grid-template-rows: 80px 300px 60px;
 	-webkit-transition: all 2s;
 }
-	.grid-pro1 > .card-colored-1 {
+.grid-pro1 > .card-colored-1 {
 		grid-area: h ;
 		font-size: 28px;
 	}
-	.grid-pro1 > .card-colored-2 {
+.grid-pro1 > .card-colored-2 {
 		grid-area: m ;
 		font-size: 28px;
 	}
-	.grid-pro1 > .card-colored-3 {
+.grid-pro1 > .card-colored-3 {
 		grid-area: c ;
 		font-size: 28px;
 	}
-	.grid-pro1 > .card-colored-4 {
+.grid-pro1 > .card-colored-4 {
 		grid-area: f ;
 		font-size: 28px;
+}
+
+@keyframes survive {
+	0%{
+		opacity: .0;
 	}
+	20%{
+		margin-top: -20px;
+		opacity: .0;
+	}
+	100%{
+		margin-top: 0;
+		opacity: 1;
+	}
+
+}
+
+
 @media screen and (max-width: 480px) {
 	.grid-pro1 {
 		grid-template-areas:
