@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import xbc.jb.socialvg.refinv.domain.User;
 import xbc.jb.socialvg.refinv.repository.UserRepository;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -61,4 +62,9 @@ public class UserServiceDb implements UserService{
         else
             throw new UsernameNotFoundException(username);
     }
+
+	@Override
+	public List<User> findAll() {
+		return userRepository.findAll();
+	}
 }

@@ -19,20 +19,9 @@
 			</div>
 
 			<div class="showcase-container grid fgrid">
-				<div class="card card-element card-colored-1 fcard "> <div class="width-bar"> 640 px</div>1</div>
-				<div class="card card-element card-colored-2 fcard"><div class="width-bar"> 640 px</div>2</div>
-				<div class="card card-element card-colored-3 fcard"><div class="width-bar"> 640 px</div>3</div>
-				<div class="card card-element card-colored-4 fcard"><div class="width-bar"> 640 px</div>4</div>
-				<div class="card card-element card-colored-5 fcard"><div class="width-bar"> 640 px</div>5</div>
-				<div class="card card-element card-colored-6 fcard"><div class="width-bar"> 640 px</div>6</div>
-				<div class="card card-element card-colored-1 fcard"><div class="width-bar"> 640 px</div>7</div>
-				<div class="card card-element card-colored-1 fcard "> <div class="width-bar"> 640 px</div>1</div>
-				<div class="card card-element card-colored-2 fcard"><div class="width-bar"> 640 px</div>2</div>
-				<div class="card card-element card-colored-3 fcard"><div class="width-bar"> 640 px</div>3</div>
-				<div class="card card-element card-colored-4 fcard"><div class="width-bar"> 640 px</div>4</div>
-				<div class="card card-element card-colored-5 fcard"><div class="width-bar"> 640 px</div>5</div>
-				<div class="card card-element card-colored-6 fcard"><div class="width-bar"> 640 px</div>6</div>
-				<div class="card card-element card-colored-1 fcard"><div class="width-bar"> 640 px</div>7</div>
+				<div th:each="user : ${list}">
+					<div class="card card-element card-colored-1 fcard "> <div class="width-bar"> 640 px</div>1</div>
+				</div>
 			</div>
 		</div>
 	</div>
