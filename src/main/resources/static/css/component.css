@@ -11,6 +11,7 @@ a {
 /*    margin-left: -175px;*/
 /*}*/
 
+
 .login-container {
     /*position: center;*/
     margin: auto;
@@ -29,11 +30,24 @@ a {
 }
 
 .form-field {
+    /*margin: 8px auto;*/
     min-width: 75%;
+    width: 75%;
+}
+
+.form-label {
+    margin: 12px auto;
+    font-size: 12px;
+    /*text-align: left;*/
+}
+
+.form-label-error {
+    color: deeppink;
 }
 
 input
 {
+    /*margin: 8px auto;*/
     font-size: 14px;
 }
 
@@ -62,7 +76,7 @@ input
 
 input[type="text"], input[type="password"], input[type="email"] {
     width: 100%;
-    padding: 20px 0px;
+    padding: 16px 0px;
     background: transparent;
     border: 0;
     border-bottom: 1px solid rgba(52, 152, 219,1.0);
@@ -76,11 +90,11 @@ input[type=checkbox] {
     display: none;
 }
 
-label {
+/*label {
     display: block;
     position: absolute;
     margin-right: 10px;
-    /*width: 8px;*/
+    !*width: 8px;*!
     height: 8px;
     border-radius: 50%;
     background: transparent;
@@ -88,7 +102,7 @@ label {
     transition: all 0.3s ease-in-out;
     cursor: pointer;
     border: 3px solid #435160;
-}
+}*/
 
 #agree:checked ~ label[for=agree] {
     background: #435160;

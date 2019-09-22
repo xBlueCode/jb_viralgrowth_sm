@@ -25,14 +25,24 @@
 							<div class="form-field">
 								<input id='pw' name='password' placeholder='Password' type='password' th:field="*{password}">
 							</div>
+<!--							<div class="form-field" th:if="${#fields.hasAnyErrors()}">-->
+<!--								<a class="form-label form-label-error">-->
+<!--									You've entered an incorrect username and/or password. Please try again.-->
+<!--								</a>-->
+<!--							</div>-->
+							<div class="form-field" th:if="${#fields.hasAnyErrors()}">
+								<p class='form-label form-label-error'>
+									You've entered an incorrect username and/or password. Please try again.
+								</p>
+							</div>
 							<div class="form-field">
 								<input class="card-nosh button box-sh" type='submit' value='Sign in'>
 							</div>
-							<div class="form-field">
+							<div class="form-field" >
 								<a class='forgot' href='#'>Forgot password?</a>
 							</div>
 							<div class="form-field">
-								<a class='forgot' href='/signup'>Not a member? Join us !</a>
+								<a class='forgot' href='/signup'>Not a member? Join us!</a>
 							</div>
 						</div>
 					</form>

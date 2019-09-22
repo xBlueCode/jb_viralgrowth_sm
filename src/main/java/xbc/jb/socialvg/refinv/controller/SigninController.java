@@ -45,9 +45,33 @@ public class SigninController {
 	public String signin(@ModelAttribute("user") User user, BindingResult bindingResult) {
 		System.out.println("---------------------------+++++");
 		logger.info(String.format("Signing in ...: %s", user.getUsername()));
+
+		/*
 		if (userSecurityService.authenticate(user))
 			return "redirect:/dashboard";
-		else
+		else {
+			logger.info(String.format("Signing in failed: %s", user.getUsername()));
+			bindingResult.reject(
+					"badcred",
+					"You've entered an incorrect username and/or password. Please try again !");
 			return "signin";
+		}*/
+		try {
+			if (userSecurityService.authenticate(user))
+				return "redirect:/dashboard";
+			logger.info(String.format("Signing in failed: %s", user.getUsername()));
+			bindingResult.reject(
+					"badcred",
+					"You've entered an incorrect username and/or password. Please try again !");
+			return "signin";
+		}
+		catch (Exception e)
+		{
+			logger.info(String.format("Signing in failed: %s", user.getUsername()));
+			bindingResult.reject(
+					"badcred",
+					"You've entered an incorrect username and/or password. Please try again !");
+			return "signin";
+		}
 	}
 }
