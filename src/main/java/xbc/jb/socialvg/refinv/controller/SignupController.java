@@ -41,15 +41,22 @@ public class SignupController {
     @PostMapping
     public String signup(@ModelAttribute("user") @Valid User user, BindingResult bindingResult)
     {
-        if (userServiceDb.findUserByUsername(user.getUsername()).isPresent())
-            bindingResult.rejectValue(
-                    "username",
-                    null,
-                    "There is already an account with that username !");
-		if (bindingResult.hasErrors())
+    	try {
+			if (userServiceDb.findUserByUsername(user.getUsername()).isPresent())
+				bindingResult.rejectValue(
+						"username",
+						null,
+						"There is already an account with that username !");
+			if (bindingResult.hasErrors())
+				return "signup";
+			userServiceDb.save(user);
+			System.out.println("saved ++++++++++++++++++++++++");
+			return "redirect:/signin";
+		}
+        catch (Exception e)
+		{
+			e.printStackTrace();
 			return "signup";
-		userServiceDb.save(user);
-        System.out.println("saved ++++++++++++++++++++++++");
-		return "redirect:/signin";
+		}
     }
 }

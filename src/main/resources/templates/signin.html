@@ -19,25 +19,27 @@
 				<div class="card-nosh card-element Without-grids">
 					<form action="#" th:action="@{/signin}" th:method="post" th:object="${user}">
 						<div class="form-container">
+
 							<div class="form-field">
 								<input name='username' placeholder='Username' type='text' th:field="*{username}">
 							</div>
+							<div class="form-field" th:if="${#fields.hasErrors('username')}">
+								<p class='form-label form-label-error' th:errors="*{username}"></p>
+							</div>
+
 							<div class="form-field">
 								<input id='pw' name='password' placeholder='Password' type='password' th:field="*{password}">
 							</div>
-<!--							<div class="form-field" th:if="${#fields.hasAnyErrors()}">-->
-<!--								<a class="form-label form-label-error">-->
-<!--									You've entered an incorrect username and/or password. Please try again.-->
-<!--								</a>-->
-<!--							</div>-->
 							<div class="form-field" th:if="${#fields.hasAnyErrors()}">
 								<p class='form-label form-label-error'>
 									You've entered an incorrect username and/or password. Please try again.
 								</p>
 							</div>
+
 							<div class="form-field">
 								<input class="card-nosh button box-sh" type='submit' value='Sign in'>
 							</div>
+
 							<div class="form-field" >
 								<a class='forgot' href='#'>Forgot password?</a>
 							</div>

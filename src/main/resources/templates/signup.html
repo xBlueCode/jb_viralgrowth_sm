@@ -22,18 +22,32 @@
 							<div class="form-field">
 								<input name='username' placeholder='Username' type='text' th:field="*{username}">
 							</div>
+							<div class="form-field" th:if="${#fields.hasErrors('username')}">
+								<p class='form-label form-label-error' th:errors="*{username}"></p>
+							</div>
+
 							<div class="form-field">
 								<input name='email' placeholder='Email' type='email' th:field="*{email}">
 							</div>
+
 							<div class="form-field">
 								<input id='pw' name='password' placeholder='Password' type='password' th:field="*{password}">
 							</div>
+							<div class="form-field" th:if="${#fields.hasErrors('password')}">
+								<p class='form-label form-label-error' th:errors="*{password}"></p>
+							</div>
+
 							<div class="form-field">
 								<input name='icode' placeholder='Invitation Code' type='text' th:field="*{iCode}">
 							</div>
+							<div class="form-field" th:if="${#fields.hasErrors('iCode')}">
+								<p class='form-label form-label-error' th:errors="*{iCode}"></p>
+							</div>
+
 							<div class="form-field">
 								<input class="card-nosh button box-sh" type='submit' value='Sign up'>
 							</div>
+
 							<div class="form-field">
 								<a class="forgot" href="#">By signing up, you agree to our Terms , Data Policy and Cookies Policy.</a>
 							</div>

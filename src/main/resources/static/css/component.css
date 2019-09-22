@@ -36,19 +36,21 @@ a {
 }
 
 .form-label {
-    margin: 12px auto;
+    margin: 8px auto;
     font-size: 12px;
     /*text-align: left;*/
 }
 
 .form-label-error {
     color: deeppink;
+    margin-bottom: 0;
 }
 
 input
 {
     /*margin: 8px auto;*/
     font-size: 14px;
+    text-align: center;
 }
 
 .button {

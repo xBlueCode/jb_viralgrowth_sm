@@ -3,12 +3,14 @@ package xbc.jb.socialvg.refinv.domain;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.UniqueElements;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 import java.util.Collection;
 
 /**
@@ -25,18 +27,20 @@ public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotEmpty
+    @NotEmpty(message = "Must not be empty")
     @Column(unique = true)
+    @Length(min = 4, max = 26, message = "Length must be between 4 and 26 !")
     private String username;
 
-    @NotEmpty
     @Column(unique = true)
+    @NotEmpty(message = "Must not be empty")
     private String email;
 
-    @NotEmpty
-    @Length(min = 4)
+    @NotEmpty(message = "Must not be empty")
+    @Length(min = 4, message = "Length must be bigger than 4 !")
     private String password;
 
+//    @Length(min=4, max=12, message = "Length must be between 4 and 12 !")
     private String iCode;
 
     @Override
