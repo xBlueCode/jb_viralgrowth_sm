@@ -12,6 +12,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 import java.util.Collection;
+import java.util.Optional;
 
 /**
  *
@@ -42,6 +43,12 @@ public class User implements UserDetails {
 
 //    @Length(min=4, max=12, message = "Length must be between 4 and 12 !")
     private String iCode;
+
+    private String rCode;
+
+    private Double score;
+
+    private Long invitees;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -100,5 +107,39 @@ public class User implements UserDetails {
 
     public void setiCode(String iCode) {
         this.iCode = iCode;
+    }
+
+    public String getrCode() {
+        return rCode;
+    }
+
+    public void setrCode(String rCode) {
+        this.rCode = rCode;
+    }
+
+    public Double getScore() {
+        return score;
+    }
+
+    public void setScore(Double score) {
+        this.score = score;
+    }
+
+    public void addScore(Double value)
+    {
+        this.score += value;
+    }
+
+    public Long getInvitees() {
+        return invitees;
+    }
+
+    public void setInvitees(Long invitees) {
+        this.invitees = invitees;
+    }
+
+    public void addInvitee(Long val)
+    {
+        this.invitees += val;
     }
 }

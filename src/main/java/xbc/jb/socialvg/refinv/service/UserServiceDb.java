@@ -32,10 +32,14 @@ public class UserServiceDb implements UserService{
 		this.passwordEncoder = passwordEncoder;
 	}
 
-
     @Override
     public void save(User user)
     {
+    	Optional<User> opRUser = userRepository.findUserByRCode(user.getiCode());
+    	user.setScore(.0);
+    	user.setInvitees(0L);
+    	if (opRUser.isPresent())
+			updateScore(user.getiCode(), 1);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
     }
@@ -76,5 +80,20 @@ public class UserServiceDb implements UserService{
 	@Override
 	public Page<User> findPage(Pageable pageRequest) {
 		return userPageRepository.findAll(pageRequest);
+	}
+
+	@Override
+	public void updateScore(String rCode, int l) {
+
+		if (rCode == null)
+			return;
+		Optional<User> opUser = userRepository.findUserByRCode(rCode);
+		if (!opUser.isPresent())
+			return;
+		//opUser.get().addScore(Math.exp(-l));
+		opUser.get().addInvitee(1L);
+		opUser.get().addScore(1.0 / l);
+		update(opUser.get());
+		updateScore(opUser.get().getiCode(), l +  1);
 	}
 }

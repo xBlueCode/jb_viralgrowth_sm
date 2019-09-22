@@ -19,7 +19,8 @@ public class InitializerDb implements CommandLineRunner {
 			User user = new User();
 			user.setUsername(String.format("user%d", i));
 			user.setPassword(String.format("pass%d", i));
-			user.setiCode(String.format("icode%d", (10 - i)%10));
+			user.setrCode(String.format("refcode%d", i));
+			user.setiCode(String.format("refcode%d", i - 1));
 			user.setEmail(String.format("user%d@gmail.com", i));
 			userServiceDb.save(user);
 		}

@@ -25,14 +25,19 @@
 						<br/>
 						<p class="form-label" th:text="${user.email}"></p>
 						<br/>
+						<p class="form-label" th:text="${user.rCode}"></p>
+						<br/>
 						<p class="form-label" th:text="${user.iCode}"></p>
 						<br/>
+						<p class="form-label" th:text="${user.score}"></p>
+						<br/>
+						<p class="form-label" th:text="${user.invitees}"></p>
 					</div>
 				</div>
 			</div>
 			<p class="form-label" id="pagen" th:text="${#request.getParameter('page')}"></p>
 			<button id="page_prev" onclick="paginate(this)">Prev</button>
-			<button id="page_next" onclick="paginate(this)">Prev</button>
+			<button id="page_next" onclick="paginate(this)">Next</button>
 			<script>
 				function paginate(paction)
 				{
