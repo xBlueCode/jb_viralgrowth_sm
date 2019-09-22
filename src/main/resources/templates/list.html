@@ -1,0 +1,50 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+			xmlns:th="http://www.thymeleaf.org"
+			th:replace="~{fragments/layout :: layout (~{::body},'dashboard')}">
+<head>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/layout.css}"/>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/grid.css}"/>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/component.css}"/>
+</head>
+<body >
+<div class="abs">
+	<div>
+		<div class="showcase card card-colored-0">
+			<div class="showcase-title">
+				<h2>List of users</h2>
+<!--				<h3>Handling auto fitting</h3>-->
+<!--				<p>Using auto-fit and minmax()</p>-->
+			</div>
+
+			<div class="showcase-container grid fgrid">
+				<div class="card card-element card-colored-1 fcard "> <div class="width-bar"> 640 px</div>1</div>
+				<div class="card card-element card-colored-2 fcard"><div class="width-bar"> 640 px</div>2</div>
+				<div class="card card-element card-colored-3 fcard"><div class="width-bar"> 640 px</div>3</div>
+				<div class="card card-element card-colored-4 fcard"><div class="width-bar"> 640 px</div>4</div>
+				<div class="card card-element card-colored-5 fcard"><div class="width-bar"> 640 px</div>5</div>
+				<div class="card card-element card-colored-6 fcard"><div class="width-bar"> 640 px</div>6</div>
+				<div class="card card-element card-colored-1 fcard"><div class="width-bar"> 640 px</div>7</div>
+				<div class="card card-element card-colored-1 fcard "> <div class="width-bar"> 640 px</div>1</div>
+				<div class="card card-element card-colored-2 fcard"><div class="width-bar"> 640 px</div>2</div>
+				<div class="card card-element card-colored-3 fcard"><div class="width-bar"> 640 px</div>3</div>
+				<div class="card card-element card-colored-4 fcard"><div class="width-bar"> 640 px</div>4</div>
+				<div class="card card-element card-colored-5 fcard"><div class="width-bar"> 640 px</div>5</div>
+				<div class="card card-element card-colored-6 fcard"><div class="width-bar"> 640 px</div>6</div>
+				<div class="card card-element card-colored-1 fcard"><div class="width-bar"> 640 px</div>7</div>
+			</div>
+		</div>
+	</div>
+
+	<!--<ul>-->
+	<!--    <li>-->
+	<!--        <a href="/dashboard/refer">Refer and earn</a>-->
+	<!--    </li>-->
+	<!--    <li>-->
+	<!--        <a href="/logout">Logout</a>-->
+	<!--    </li>-->
+	<!--</ul>-->
+</div>
+</body>
+</html>
