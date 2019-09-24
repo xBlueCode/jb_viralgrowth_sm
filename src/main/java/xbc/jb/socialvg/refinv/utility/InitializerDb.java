@@ -22,10 +22,10 @@ public class InitializerDb implements CommandLineRunner {
 			user.setPassword(String.format("pass%d", i));
 			if (i > 0)
 				user.setiCode(lastRcode);
-			user.setInvitees(0L);
-			user.setDirect(0L);
 			user.setEmail(String.format("user%d@gmail.com", i));
 			userServiceDb.save(user);
+			if (i == 10)
+				System.out.println(lastRcode);
 			lastRcode = user.getrCode();
 		}
 	}

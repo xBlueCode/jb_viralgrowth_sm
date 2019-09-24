@@ -118,20 +118,32 @@ a[id="fb"]{
     flex-direction: column;
     width: 192px;
     min-height: 384px;
+
     margin: 8px;
-    padding: 0;
     background: #fff;
     color: darkgray;
     animation: survive 1s ease .0s 1 forwards;
 }
 
+.procard-img-cont{
+	overflow: hidden;
+	border-radius: 4px 4px 0 0;
+	height: 192px;
+	width: 192px;
+}
+
 .proimg {
-    height: 192px;
-    width: 192px;
+    height: 100%;
+    width: 100%;
     object-fit: cover;
     /*border-radius: 4px 4px 50% 50%;*/
-	border-radius: 4px 4px 0 0;
+	/*border-radius: 4px 4px 0 0;*/
     /*box-shadow: 0 2px 10px rgba(0,0,0,0.16), 0 2px 10px rgba(0,0,0,0.23);*/
+	transition: transform .4s ease;
+}
+
+.proimg:hover {
+	transform: scale(1.1);
 }
 
 .procard-row{

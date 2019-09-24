@@ -39,6 +39,7 @@ public class UserServiceDb implements UserService{
     	Optional<User> opRUser = userRepository.findUserByRCode(user.getiCode());
     	user.setScore(.0);
     	user.setInvitees(0L);
+    	user.setDirect(0L);
     	if (opRUser.isPresent())
 			updateScore(user.getiCode(), 1);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
