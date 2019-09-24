@@ -14,6 +14,7 @@ import xbc.jb.socialvg.refinv.repository.UserRepository;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 
 /**
  *
@@ -41,6 +42,7 @@ public class UserServiceDb implements UserService{
     	if (opRUser.isPresent())
 			updateScore(user.getiCode(), 1);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
+        generateRCode(user);
         userRepository.save(user);
     }
 
@@ -102,5 +104,28 @@ public class UserServiceDb implements UserService{
 	@Override
 	public long count() {
 		return userRepository.count();
+	}
+
+	@Override
+	public void generateRCode(User user) {
+
+		if (user == null || user.getUsername() == null)
+			return;
+		StringBuilder sb = new StringBuilder();
+		sb.append(user.getUsername().substring(0, 4).toUpperCase());
+		sb.append('-');
+		while (true)
+		{
+			Random random = new Random();
+			Integer rNum = random.nextInt(1000000);
+			sb.append(String.format("%06d", rNum));
+			if (userRepository.findUserByRCode(sb.toString()).isPresent())
+				sb.delete(5, sb.toString().length());
+			else
+			{
+				user.setrCode(sb.toString());
+				break;
+			}
+		}
 	}
 }

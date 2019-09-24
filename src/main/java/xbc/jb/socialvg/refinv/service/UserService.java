@@ -24,4 +24,6 @@ public interface UserService extends UserDetailsService {
 	void updateScore(String rCode, int l);
 
 	long count();
+
+	void generateRCode(User user);
 }
