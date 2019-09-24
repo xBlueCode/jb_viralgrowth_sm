@@ -8,19 +8,42 @@
 	<link rel="stylesheet" type="text/css" th:href="@{/css/grid.css}"/>
 	<link rel="stylesheet" type="text/css" th:href="@{/css/component.css}"/>
 </head>
-<body >
-<div class="abs">
-	<div>
-		<div class="showcase card card-colored-0">
-			<div class="showcase-title">
+<body style="height: 100%">
+<div class="abs" style="height: 100%">
+	<div style="height: 100%">
+		<div class="showcase card-nosh" style="height: 100%">
+			<div class="showcase-title card card-colored-0" style="padding: 16px">
 				<h2>List of users</h2>
 <!--				<h3>Handling auto fitting</h3>-->
 <!--				<p>Using auto-fit and minmax()</p>-->
 			</div>
 
-			<div class="showcase-container grid fgrid ">
+			<div class="showcase-title card card-colored-0 ltoolbar">
+				<div class="ltoolbar-elem">
+					<button id="page_prev" onclick="paginate(this)">Prev</button>
+				</div>
+				<div class="ltoolbar-elem">
+					<p class="form-label" id="pagen" th:text="${#request.getParameter('page')}"></p>
+				</div>
+				<div class="ltoolbar-elem">
+					<button id="page_next" onclick="paginate(this)">Next</button>
+				</div>
+			</div>
+
+			<div class="showcase-container progrid", style="height: 100%">
 				<div th:each="user : ${list}">
-					<div class="card card-element card-colored-1 fcard ">
+					<div class="card procard">
+						<div>
+							<img src="/images/default/cvpic.png" class="proimg">
+							<div class="procard-row">
+								<p>
+									Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+								</p>
+							</div>
+						</div>
+					</div>
+
+					<!--<div class="card card-element card-colored-1 fcard ">
 						<p class="form-label" th:text="${user.username}"></p>
 						<br/>
 						<p class="form-label" th:text="${user.email}"></p>
@@ -32,12 +55,10 @@
 						<p class="form-label" th:text="${user.score}"></p>
 						<br/>
 						<p class="form-label" th:text="${user.invitees}"></p>
-					</div>
+					</div>-->
 				</div>
 			</div>
-			<p class="form-label" id="pagen" th:text="${#request.getParameter('page')}"></p>
-			<button id="page_prev" onclick="paginate(this)">Prev</button>
-			<button id="page_next" onclick="paginate(this)">Next</button>
+
 			<script>
 				function paginate(paction)
 				{
