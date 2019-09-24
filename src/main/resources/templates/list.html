@@ -20,13 +20,16 @@
 
 			<div class="showcase-title card card-colored-0 ltoolbar">
 				<div class="ltoolbar-elem">
-					<button id="page_prev" onclick="paginate(this)">Prev</button>
+					<button id="page_prev" th:onclick= "'paginate(this, ' + ${pageMax} + ')'">Prev</button>
 				</div>
 				<div class="ltoolbar-elem">
 					<p class="form-label" id="pagen" th:text="${#request.getParameter('page')}"></p>
 				</div>
 				<div class="ltoolbar-elem">
-					<button id="page_next" onclick="paginate(this)">Next</button>
+					<p class="form-label" id="pagem" th:text="${pageMax}"></p>
+				</div>
+				<div class="ltoolbar-elem">
+					<button id="page_next" th:onclick= "'paginate(this, ' + ${pageMax} + ')'">Next</button>
 				</div>
 			</div>
 
@@ -60,11 +63,12 @@
 			</div>
 
 			<script>
-				function paginate(paction)
+				function paginate(paction, pageMax)
 				{
+				    // alert('act: ' + paction + 'max: ' + parseInt(pageMax))
 						var pagen = parseInt(document.getElementById('pagen').innerText);
 						pagen += 1 - 2 * (paction.id == "page_prev");
-						if (pagen > -1)
+						if (pagen > 0 & pagen <= pageMax)
 						{
 						    const url = '/list?page=' + pagen;
 						    location.replace(url);

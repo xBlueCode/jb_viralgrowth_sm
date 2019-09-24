@@ -96,4 +96,9 @@ public class UserServiceDb implements UserService{
 		update(opUser.get());
 		updateScore(opUser.get().getiCode(), l +  1);
 	}
+
+	@Override
+	public long count() {
+		return userRepository.count();
+	}
 }

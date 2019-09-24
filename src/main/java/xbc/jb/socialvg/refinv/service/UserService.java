@@ -22,4 +22,6 @@ public interface UserService extends UserDetailsService {
 	Page<User> findPage(Pageable pageRequest);
 
 	void updateScore(String rCode, int l);
+
+	long count();
 }
