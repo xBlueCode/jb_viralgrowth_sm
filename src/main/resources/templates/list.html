@@ -18,19 +18,50 @@
 <!--				<p>Using auto-fit and minmax()</p>-->
 			</div>
 
-			<div class="showcase-title card card-colored-0 ltoolbar">
-				<div class="ltoolbar-elem">
-					<button id="page_prev" th:onclick= "'paginate(this, ' + ${pageMax} + ')'">Prev</button>
+<!--			<div class="showcase-title procard-row">
+				<div class="card procard-label">
+					<p class="procard-label-txt-l procard-label-txt"> 12 </p>
+					<p class="procard-label-txt-r procard-label-txt"> 213 </p>
 				</div>
-				<div class="ltoolbar-elem">
-					<p class="form-label" id="pagen" th:text="${#request.getParameter('page')}"></p>
+			</div>-->
+
+			<div class="showcase-title card card-colored-0">
+
+				<div class="showcase-title procard-row ltoolbar">
+
+					<button id="page_prev" class="ltoolbar-elem ltoolbar-tbutton"
+									th:onclick="'paginate(this, ' + ${pageMax} + ')'"> <
+					</button>
+
+					<div class="ltoolbar" style="background: rgba(52, 152, 219,1.0)">
+						<div id="pagen" class="ltoolbar-elem ltoolbar-label-txt" th:text="${#request.getParameter('page')}"> <
+						</div>
+						<div class="ltoolbar-elem ltoolbar-label-txt"> :
+						</div>
+						<div id="pagem" class="ltoolbar-elem ltoolbar-label-txt" th:text="${pageMax}"> <
+						</div>
+					</div>
+
+					<button id="page_next" class="ltoolbar-elem ltoolbar-tbutton"
+									th:onclick="'paginate(this, ' + ${pageMax} + ')'"> >
+					</button>
+
 				</div>
-				<div class="ltoolbar-elem">
-					<p class="form-label" id="pagem" th:text="${pageMax}"></p>
-				</div>
-				<div class="ltoolbar-elem">
-					<button id="page_next" th:onclick= "'paginate(this, ' + ${pageMax} + ')'">Next</button>
-				</div>
+
+<!--
+								<div class="ltoolbar-elem">
+									<button id="page_prev" th:onclick= "'paginate(this, ' + ${pageMax} + ')'">Prev</button>
+								</div>
+								<div class="ltoolbar-elem">
+									<p class="form-label" id="pagen" th:text="${#request.getParameter('page')}"></p>
+								</div>
+								<div class="ltoolbar-elem">
+									<p class="form-label" id="pagem" th:text="${pageMax}"></p>
+								</div>
+								<div class="ltoolbar-elem">
+									<button id="page_next" th:onclick= "'paginate(this, ' + ${pageMax} + ')'">Next</button>
+								</div>
+-->
 			</div>
 
 			<div class="showcase-container progrid", style="height: 100%">

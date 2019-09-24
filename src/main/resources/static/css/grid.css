@@ -192,8 +192,9 @@ a[id="fb"]{
 
 .ltoolbar{
     display: flex;
-    justify-content: center;
-    flex-wrap: nowrap;
+	margin: 0 auto;
+	max-width: 192px;
+	justify-content: space-between;
     flex-direction: row;
 }
 
@@ -201,7 +202,32 @@ a[id="fb"]{
     margin: 16px;
 }
 
+.ltoolbar-tbutton{
+	color: rgba(52, 152, 219,1.0);
+	background: transparent;
+	border: 0;
+	font-size: 18px;
+	font-weight: 900;
+	opacity: .9;
+	transition: color .4s ease;
+	text-align: center;
+	/*text-shadow: 0 3px 5px rgba(0,0,0,0.16), 0 3px 5px rgba(0,0,0,0.23);*/
+;
+}
 
+.ltoolbar-tbutton:hover{
+	color: #444;
+	cursor: pointer;
+}
+
+.ltoolbar-button-txt{
+	color: #fff;
+}
+
+.ltoolbar-label-txt{
+	color: #fff;
+	font-size: 14px;
+}
 
 .card-op-survive {
 	animation: survive 1s ease .0s 1 forwards;
