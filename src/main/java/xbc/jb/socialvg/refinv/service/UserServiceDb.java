@@ -92,6 +92,8 @@ public class UserServiceDb implements UserService{
 			return;
 		//opUser.get().addScore(Math.exp(-l));
 		opUser.get().addInvitee(1L);
+		if (l == 1)
+			opUser.get().addDirect(1L);
 		opUser.get().addScore(1.0 / l);
 		update(opUser.get());
 		updateScore(opUser.get().getiCode(), l +  1);

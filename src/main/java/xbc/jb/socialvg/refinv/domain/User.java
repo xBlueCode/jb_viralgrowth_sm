@@ -50,6 +50,8 @@ public class User implements UserDetails {
 
     private Long invitees;
 
+    private Long direct;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return null;
@@ -125,6 +127,14 @@ public class User implements UserDetails {
         this.score = score;
     }
 
+    public Long getDirect() {
+        return direct;
+    }
+
+    public void setDirect(Long direct) {
+        this.direct = direct;
+    }
+
     public void addScore(Double value)
     {
         this.score += value;
@@ -141,5 +151,9 @@ public class User implements UserDetails {
     public void addInvitee(Long val)
     {
         this.invitees += val;
+    }
+
+    public void addDirect(Long n) {
+        this.direct += n;
     }
 }

@@ -14,13 +14,15 @@ public class InitializerDb implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		for (int i = 0; i < 10; i++)
+		for (int i = 0; i < 20; i++)
 		{
 			User user = new User();
 			user.setUsername(String.format("user%d", i));
 			user.setPassword(String.format("pass%d", i));
 			user.setrCode(String.format("refcode%d", i));
 			user.setiCode(String.format("refcode%d", i - 1));
+			user.setInvitees(0L);
+			user.setDirect(0L);
 			user.setEmail(String.format("user%d@gmail.com", i));
 			userServiceDb.save(user);
 		}

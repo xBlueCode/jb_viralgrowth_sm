@@ -47,21 +47,6 @@
 					</button>
 
 				</div>
-
-<!--
-								<div class="ltoolbar-elem">
-									<button id="page_prev" th:onclick= "'paginate(this, ' + ${pageMax} + ')'">Prev</button>
-								</div>
-								<div class="ltoolbar-elem">
-									<p class="form-label" id="pagen" th:text="${#request.getParameter('page')}"></p>
-								</div>
-								<div class="ltoolbar-elem">
-									<p class="form-label" id="pagem" th:text="${pageMax}"></p>
-								</div>
-								<div class="ltoolbar-elem">
-									<button id="page_next" th:onclick= "'paginate(this, ' + ${pageMax} + ')'">Next</button>
-								</div>
--->
 			</div>
 
 			<div class="showcase-container progrid", style="height: 100%">
@@ -104,7 +89,7 @@
 						<div class="procard-row">
 							<div class="card procard-label">
 								<p class="procard-label-txt-l procard-label-txt"> Direct </p>
-								<p class="procard-label-txt-r procard-label-txt" th:text="${user.invitees}">
+								<p class="procard-label-txt-r procard-label-txt" th:text="${user.direct}">
 								</p>
 							</div>
 						</div>
