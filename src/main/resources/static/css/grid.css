@@ -145,7 +145,8 @@ a[id="fb"]{
 }
 
 .procard-title, .procard-sub-title{
-	margin-top: 4px;
+	text-align: center;
+	margin-top: 8px;
 }
 
 .procard-title{
@@ -154,6 +155,7 @@ a[id="fb"]{
 }
 .procard-sub-title{
 	font-size: 12px;
+	margin-bottom: 8px;
 }
 
 .procard-label{
@@ -162,7 +164,7 @@ a[id="fb"]{
 	border-radius: 24px;
 	padding: 8px;
 	display: flex;
-	align-items: center;
+	justify-content: space-between;
 	transition: background-color .4s ease;
 }
 
@@ -171,11 +173,21 @@ a[id="fb"]{
 	cursor: pointer;
 }
 
-.procard-label-txt
+.procard-label-txt-l, .procard-label-txt-r
 {
 	text-align: center;
-	color: rgba(52, 152, 219,1.0);;
-	min-width: 100%
+	color: rgba(52, 152, 219,1.0);
+}
+
+.procard-label-txt-l
+{
+	margin-left: 8px;
+}
+
+.procard-label-txt-r
+{
+	font-weight: bolder;
+	margin-right: 8px;
 }
 
 .ltoolbar{

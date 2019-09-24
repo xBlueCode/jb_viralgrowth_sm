@@ -56,25 +56,28 @@
 
 						<div class="procard-row">
 							<div class="card procard-label">
-								<p class="procard-label-txt">
-									Score  | 12.24
+								<p class="procard-label-txt-l procard-label-txt"> Score </p>
+								<p class="procard-label-txt-r procard-label-txt" th:text="${#numbers.formatDecimal(user.score, 0, 'COMMA', 2, 'POINT')}">
 								</p>
 							</div>
 						</div>
+
 						<div class="procard-row">
 							<div class="card procard-label">
-								<p class="procard-label-txt">
-									Total  | 12.24
+								<p class="procard-label-txt-l procard-label-txt"> Invited </p>
+								<p class="procard-label-txt-r procard-label-txt" th:text="${user.invitees}">
 								</p>
 							</div>
 						</div>
+
 						<div class="procard-row">
 							<div class="card procard-label">
-								<p class="procard-label-txt">
-									Direct  | 12.24
+								<p class="procard-label-txt-l procard-label-txt"> Direct </p>
+								<p class="procard-label-txt-r procard-label-txt" th:text="${user.invitees}">
 								</p>
 							</div>
 						</div>
+
 						<div class="card-colored-5 procard-row procard-bar" style="margin-top: 16px">
 						</div>
 					</div>

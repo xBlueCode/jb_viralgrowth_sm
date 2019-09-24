@@ -38,6 +38,8 @@ public class ListController {
 		 */
 //		model.addAttribute("list", userServiceDb.findAll());
 
+
+
 		long count = userServiceDb.count();
 		long pageMax = count / 4 + ((count % 4) == 0 ? 0 : 1);
 		model.addAttribute("list", userServiceDb.findPage(PageRequest.of(pageN - 1, 4)));
