@@ -17,6 +17,7 @@ import xbc.jb.socialvg.refinv.service.UserServiceDb;
 import java.awt.print.Pageable;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/list")
@@ -34,17 +35,13 @@ public class ListController {
 	}
 
 	@GetMapping
-	public String dashboard(Model model, @RequestParam("page") int pageN)
+	public String dashboard(Model model, @RequestParam("type") String type, @RequestParam("page") int pageN)
 	{
-		/*
-		Optional<User> opUser = userSecurityUtil.getAuthenticatedUser();
-		if (opUser.isPresent())
-			return "dashboard";
-		else
+		Optional<User> opUser = userSecurityService.getAuthenticatedUser();
+		if (!opUser.isPresent())
 			return "redirect:/";
-		 */
-//		model.addAttribute("list", userServiceDb.findAll());
-
+		opUser.get().setPassword("");
+		model.addAttribute("currentUser", opUser.get());
 		try{
 			int pageSize = webappProperties.getPaginationProperties().getPageSize();
 			long count = userServiceDb.count();
