@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import xbc.jb.socialvg.refinv.config.UserSecurityService;
 import xbc.jb.socialvg.refinv.domain.User;
+import xbc.jb.socialvg.refinv.properties.WebappProperties;
 import xbc.jb.socialvg.refinv.repository.UserPageRepository;
 import xbc.jb.socialvg.refinv.service.UserServiceDb;
 
@@ -20,11 +21,16 @@ import java.util.List;
 @RequestMapping("/list")
 public class ListController {
 
-	@Autowired
 	private UserSecurityService userSecurityService;
+	private UserServiceDb userServiceDb;
+	private WebappProperties webappProperties;
 
 	@Autowired
-	private UserServiceDb userServiceDb;
+	public ListController(UserSecurityService userSecurityService, UserServiceDb userServiceDb, WebappProperties webappProperties) {
+		this.userSecurityService = userSecurityService;
+		this.userServiceDb = userServiceDb;
+		this.webappProperties = webappProperties;
+	}
 
 	@GetMapping
 	public String dashboard(Model model, @RequestParam("page") int pageN)
@@ -38,12 +44,15 @@ public class ListController {
 		 */
 //		model.addAttribute("list", userServiceDb.findAll());
 
-
-
-		long count = userServiceDb.count();
-		long pageMax = count / 4 + ((count % 4) == 0 ? 0 : 1);
-		model.addAttribute("list", userServiceDb.findPage(PageRequest.of(pageN - 1, 4)));
-		model.addAttribute("pageMax", pageMax);
+		try{
+			int pageSize = webappProperties.getPaginationProperties().getPageSize();
+			System.out.format("Page Size:  %d\n", pageSize);
+			long count = userServiceDb.count();
+			long pageMax = count / pageSize + ((count % pageSize) == 0 ? 0 : 1);
+			model.addAttribute("list", userServiceDb.findPage(PageRequest.of(pageN - 1, pageSize)));
+			model.addAttribute("pageMax", pageMax);
+		}
+		catch (Exception e) { }
 		return "list";
 	}
 }
