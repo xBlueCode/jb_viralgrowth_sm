@@ -1,0 +1,173 @@
+:root {
+    --width-nav-left: 192px;
+    --height-nav-top: 48px;
+    --color-nav-0: #2c3e50;
+    --color-nav-1: #34495e;
+    --color-nav-2: #3498db;
+    --color-nav-3: #34495e;
+    --color-nav-4: #f1c40f;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    /*transition: all 1s ease;*/
+}
+
+html,
+body {
+    min-height: 100%;
+}
+
+body {
+    padding: 10px;
+    background: var(--color-nav-1);
+    background: #eee;
+    font-family: 'lato', sans-serif;
+    max-width: 1200px;
+    margin: 60px auto 0 auto;
+}
+
+.abs {
+    position: relative;
+}
+
+.fixnav {
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: var(--color-nav-0);
+    overflow-x: hidden;
+}
+
+.fixnav-left {
+    height: 100%;
+    width: var(--width-nav-left);
+    padding-top: calc(8px + var(--height-nav-top));
+    box-shadow: 3px 0 5px rgba(0,0,0,0.16), 3px 0 5px rgba(0,0,0,0.23);
+}
+
+.fixnav-top {
+    height: var(--height-nav-top);
+    width: calc(100% - var(--width-nav-left));
+    margin: 0 var(--width-nav-left);
+    padding-top: 8px;
+    box-shadow: 3px 0 5px rgba(0,0,0,0.16), 3px 0 5px rgba(0,0,0,0.23);
+}
+
+.fixnav .img-cont {
+    margin: 0 16px;
+    height: calc(192px - 32px);
+    border: solid 2px var(--color-nav-2);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.fixnav-left img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .4s ease;
+}
+
+.fixnav-left img:hover {
+    transform: scale(1.1);
+}
+
+.fixnav-left .nav-sep{
+    width: 100%;
+    margin: 16px 0;
+    border: solid .5px rgba(0,0,0,0.1);
+}
+
+.fixnav A, box a {
+    padding: 8px 8px 8px 16px;
+    text-decoration: none;
+    font-size: 14px;
+    color: var(--color-nav-2);
+    display: block;
+    transition: background-color .4s ease;
+}
+
+.fixnav a:hover, .box a {
+    background: var(--color-nav-1);
+}
+
+
+.fixnav-left .elem{
+    font-size: 14px;
+    margin: 0;
+    padding: 8px 16px;
+    display: flex;
+    justify-content: space-between;
+    transition: background-color .4s ease;
+}
+
+
+/*
+.fixnav-left .elem:hover{
+    background: var(--color-nav-1);
+    background: #fff;
+}
+*/
+
+
+.fixnav-left .hoverable:hover{
+    background: var(--color-nav-1);
+}
+
+.fixnav-left .box{
+    margin: 0 16px;
+    border-radius: 4px;
+    border: 1px solid var(--color-nav-1);
+}
+
+.fixnav .btn{
+    color: var(--color-nav-2);
+    width: 100%;
+    padding: 8px;
+    background: #eee;
+    text-align: center;
+    border-radius: 4px;
+    box-shadow: 3px 0 5px rgba(0,0,0,0.16), 3px 0 5px rgba(0,0,0,0.23);
+    transition: background-color .4s ease;
+}
+
+.fixnav .btn:hover{
+    background: var(--color-nav-4);
+    background: #fff;
+    cursor: pointer;
+}
+
+.fixnav-left .elem .elem-left{
+    display: block;
+    color: var(--color-nav-2);
+}
+
+.fixnav-left .elem .elem-right{
+    color: deeppink;
+    font-weight: bolder;
+}
+
+.fixnav-left .elem .elem-mid{
+    color: #fff;
+    margin: 0 auto;
+}
+.fixnav-left .elem .inv-code{
+    font-size: 16px;
+    color: var(--color-nav-4);
+}
+
+.procard-label:hover{
+    /*background: #eee;*/
+    /*cursor: pointer;*/
+}
+
+.dash-core{
+    /*    background: #fff;*/
+    /*    height: 100%;*/
+    /*    width: 100%;*/
+    margin-left: var(--width-nav-left);
+    /*    margin-right: 24px;*/
+}

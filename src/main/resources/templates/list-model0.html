@@ -3,8 +3,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 			xmlns:th="http://www.thymeleaf.org"
 			th:replace="~{fragments/dashlayout :: dashlayout (~{::body},'list')}">
-<!--			th:replace="~{fragments/dashlayout :: dashlayout (~{::body},'list')}">-->
-<!--					th:replace="~{fragments/layout :: layout (~{::body},'list')}">-->
 <head>
 	<link rel="stylesheet" type="text/css" th:href="@{/css/layout.css}"/>
 	<link rel="stylesheet" type="text/css" th:href="@{/css/grid.css}"/>
@@ -16,8 +14,8 @@
 		<div class="showcase card-nosh" style="height: 100%">
 			<div class="showcase-title card card-colored-0" style="padding: 16px">
 				<h2>List of users</h2>
-<!--				<h3>Handling auto fitting</h3>-->
-<!--				<p>Using auto-fit and minmax()</p>-->
+				<!--				<h3>Handling auto fitting</h3>-->
+				<!--				<p>Using auto-fit and minmax()</p>-->
 			</div>
 
 			<div class="showcase-title card card-colored-0">
@@ -91,7 +89,7 @@
 						<div class="procard-row">
 							<div class="card procard-button">
 								<p class="procard-label-txt-l procard-label-txt">View Profile </p>
-<!--								<i class="far fa-eye" style="color: #222222; margin: 16px"></i>-->
+								<!--								<i class="far fa-eye" style="color: #222222; margin: 16px"></i>-->
 							</div>
 						</div>
 
@@ -116,17 +114,17 @@
 			</div>
 
 			<script>
-				function paginate(paction, pageMax)
-				{
-				    // alert('act: ' + paction + 'max: ' + parseInt(pageMax))
-						var pagen = parseInt(document.getElementById('pagen').innerText);
-						pagen += 1 - 2 * (paction.id == "page_prev");
-						if (pagen > 0 & pagen <= pageMax)
-						{
-						    const url = '/list?page=' + pagen;
-						    location.replace(url);
-						}
-				}
+          function paginate(paction, pageMax)
+          {
+              // alert('act: ' + paction + 'max: ' + parseInt(pageMax))
+              var pagen = parseInt(document.getElementById('pagen').innerText);
+              pagen += 1 - 2 * (paction.id == "page_prev");
+              if (pagen > 0 & pagen <= pageMax)
+              {
+                  const url = '/list?page=' + pagen;
+                  location.replace(url);
+              }
+          }
 			</script>
 		</div>
 	</div>

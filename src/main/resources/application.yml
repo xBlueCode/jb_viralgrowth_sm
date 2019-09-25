@@ -25,4 +25,4 @@ server:
   port: 8080
 webapp:
   pagination:
-    page-size: 6
+    page-size: 4

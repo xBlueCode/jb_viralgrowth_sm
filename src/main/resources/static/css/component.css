@@ -152,10 +152,26 @@ input[type=checkbox] {
     line-height: 15px;
 }
 
+.upload-btn-wrapper {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.upload-btn-wrapper input[type=file] {
+    font-size: 100px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+}
+
 ::-webkit-input-placeholder {
     color: #435160;
     font-size: 12px;
 }
+
+
 
 /*.animated {*/
 /*    animation-fill-mode: both;*/

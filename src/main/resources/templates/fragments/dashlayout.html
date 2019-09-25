@@ -1,15 +1,17 @@
 <!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
 
-<html xmlns="http://www.w3.org/1999/xhtml"
-			xmlns:th="http://www.thymeleaf.org"
-			th:replace="~{fragments/dashlayout :: dashlayout (~{::body},'dashboard')}">
+<html th:fragment="dashlayout (template, menu)">
+
 <head>
+	<meta charset="utf-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 	<link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" th:href="@{/css/layout.css}"/>
 	<link rel="stylesheet" type="text/css" th:href="@{/css/grid.css}"/>
 	<link rel="stylesheet" type="text/css" th:href="@{/css/component.css}"/>
 	<link rel="stylesheet" type="text/css" th:href="@{/css/dashboard.css}"/>
 </head>
+
 <body>
 <div class="fixnav fixnav-left">
 
@@ -20,28 +22,27 @@
 	<div class="nav-sep">
 	</div>
 
-	<a href="#Dashboard">Dashboard</a>
-	<a href="#List">List</a>
-	<a href="#Settings">Settings</a>
-	<a href="#Friends">Friends</a>
+	<a href="/Dashboard">Dashboard</a>
+	<a href="/list?page=1">All users</a>
+	<a href="/invitees?page=1">My invitees</a>
+	<a href="/direct?page=1">My direct invitees</a>
 
-
-	<a href="#contact">Siggn out</a>
+	<a href="/signout">Siggn out</a>
 
 	<div class="nav-sep">
 	</div>
 
 	<div class="elem hoverable">
-		<p class="elem-left"> Score </p>
-		<p class="elem-right"> 5.32 </p>
+		<p class="elem-left">Score</p>
+		<p class="elem-right" th:text="${#numbers.formatDecimal(currentUser.score, 0, 'COMMA', 2, 'POINT')}"></p>
 	</div>
 	<div class="elem hoverable">
-		<p class="elem-left"> Direct </p>
-		<p class="elem-right"> 12 </p>
+		<p class="elem-left">Invited</p>
+		<p class="elem-right" th:text="${currentUser.invitees}"></p>
 	</div>
 	<div class="elem hoverable">
-		<p class="elem-left"> Direct </p>
-		<p class="elem-right"> 3 </p>
+		<p class="elem-left">Direct</p>
+		<p class="elem-right" th:text="${currentUser.direct}"></p>
 	</div>
 
 	<div class="nav-sep" style="margin-bottom: 36px">
@@ -52,7 +53,7 @@
 			<p class="elem-mid">Invitation Code</p>
 		</div>
 		<div class="elem">
-			<p class="elem-mid inv-code">AAAXXX</p>
+			<p class="elem-mid inv-code" th:text="${currentUser.rCode}"></p>
 		</div>
 	</div>
 	<div class="elem">
@@ -63,5 +64,10 @@
 
 <div class="fixnav fixnav-top">
 </div>
+
+	<div class="dash-core">
+		<th:block th:include="${template}"/>
+	</div>
 </body>
-</html>
+
+<html>
