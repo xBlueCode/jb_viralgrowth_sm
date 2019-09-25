@@ -82,7 +82,18 @@ public class UserServiceDb implements UserService{
 
 	@Override
 	public Page<User> findPage(Pageable pageRequest) {
-		return userPageRepository.findAll(pageRequest);
+
+		Page<User> page = userPageRepository.findAll(pageRequest);
+		return page;
+	}
+
+	@Override
+	public Page<User> findPageSafe(Pageable pageRequest) {
+
+		Page<User> page = userPageRepository.findAll(pageRequest);
+		for (User user: page)
+			user.setPassword("");
+		return page;
 	}
 
 	@Override

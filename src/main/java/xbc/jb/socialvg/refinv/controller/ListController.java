@@ -15,6 +15,7 @@ import xbc.jb.socialvg.refinv.repository.UserPageRepository;
 import xbc.jb.socialvg.refinv.service.UserServiceDb;
 
 import java.awt.print.Pageable;
+import java.util.Collections;
 import java.util.List;
 
 @Controller
@@ -46,13 +47,16 @@ public class ListController {
 
 		try{
 			int pageSize = webappProperties.getPaginationProperties().getPageSize();
-			System.out.format("Page Size:  %d\n", pageSize);
 			long count = userServiceDb.count();
 			long pageMax = count / pageSize + ((count % pageSize) == 0 ? 0 : 1);
-			model.addAttribute("list", userServiceDb.findPage(PageRequest.of(pageN - 1, pageSize)));
+			model.addAttribute("list", userServiceDb.findPageSafe(PageRequest.of(pageN - 1, pageSize)));
 			model.addAttribute("pageMax", pageMax);
 		}
-		catch (Exception e) { }
+		catch (Exception e) {
+			model.addAttribute("list", Collections.EMPTY_LIST);
+			model.addAttribute("pageMax", 1);
+			return "list";
+		}
 		return "list";
 	}
 }

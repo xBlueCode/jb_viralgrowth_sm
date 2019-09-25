@@ -6,6 +6,8 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 
+import javax.validation.constraints.NotNull;
+
 //@Configuration
 //@PropertySource("classpath:application.yml")
 //@ConfigurationProperties(prefix = "pagination")

@@ -20,6 +20,7 @@ public interface UserService extends UserDetailsService {
 
     List<User> findAll();
 	Page<User> findPage(Pageable pageRequest);
+	Page<User> findPageSafe(Pageable pageRequest);
 
 	void updateScore(String rCode, int l);
 
