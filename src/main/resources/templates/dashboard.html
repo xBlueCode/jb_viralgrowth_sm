@@ -13,23 +13,60 @@
 <body>
 
 <div>
-	<form method="POST" enctype="multipart/form-data" th:action="@{/upload}">
-		<table>
-			<tr><td>File to upload:</td><td><input type="file" name="file" /></td></tr>
-			<tr><td></td><td><input type="submit" value="Upload" /></td></tr>
-		</table>
-	</form>
-</div>
 
-<!--
-<div>
-	<ul>
-		<li th:each="file : ${files}">
-			<a th:href="${file}" th:text="${file}" />
-		</li>
-	</ul>
+	<div class="showcase-title card card-colored-0" style="padding: 16px">
+		<form method="POST" enctype="multipart/form-data" th:action="@{/upload}">
+			<div class="card upload-btn-wrapper">
+				<input class="btn cardbtn" type="file" name="file">Upload a file</input>
+			</div>
+			<div class="card upload-btn-wrapper">
+				<input class="cardbtn" type="submit">Save</input>
+			</div>
+		</form>
+	</div>
+
+	<div class="showcase-title card card-colored-0" style="padding: 16px">
+		<h2>Gallery</h2>
+	</div>
+
+
+	<div class="showcase-container progrid", style="height: 100%">
+		<div th:each="photo : ${currentUser.photos}">
+			<div class="card procard" style="height: 128px">
+				<div class="procard-img-cont card-colored-4">
+					<img class="proimg" th:src="${photo.path}">
+				</div>
+				<div class="card-colored-4 procard-row procard-bar">
+				</div>
+
+				<div class="procard-row">
+					<p class="procard-title">
+						Some beautiful title
+					</p>
+				</div>
+				<div class="procard-row">
+					<p class="procard-sub-title">
+						And beautiful sub-titles
+					</p>
+				</div>
+
+				<div class="procard-row">
+					<div class="card procard-button">
+						<p class="procard-label-txt-l procard-label-txt">Download</p>
+						<!--								<i class="far fa-eye" style="color: #222222; margin: 16px"></i>-->
+					</div>
+				</div>
+
+				<div class="card-colored-5 procard-row procard-bar" style="margin-top: 16px">
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
 </div>
--->
 
 </body>
 </html>

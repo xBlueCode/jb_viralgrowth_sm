@@ -10,7 +10,7 @@ import xbc.jb.socialvg.refinv.domain.User;
 import java.util.Optional;
 
 /**
- *
+ * Main Controller
  */
 @Controller
 @RequestMapping("/")

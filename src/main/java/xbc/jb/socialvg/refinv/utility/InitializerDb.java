@@ -8,6 +8,9 @@ import xbc.jb.socialvg.refinv.domain.User;
 import xbc.jb.socialvg.refinv.service.PhotoServiceDb;
 import xbc.jb.socialvg.refinv.service.UserServiceDb;
 
+/**
+ * WebApp Initilizer: Creates some users upon the start of the application.
+ */
 @Component
 public class InitializerDb implements CommandLineRunner {
 

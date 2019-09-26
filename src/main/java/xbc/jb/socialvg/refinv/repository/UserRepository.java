@@ -9,9 +9,6 @@ import xbc.jb.socialvg.refinv.domain.User;
 import java.util.List;
 import java.util.Optional;
 
-/**
- *
- */
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
 

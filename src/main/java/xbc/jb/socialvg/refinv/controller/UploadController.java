@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -14,6 +15,11 @@ import xbc.jb.socialvg.refinv.service.UserServiceDb;
 
 import java.util.Optional;
 
+/**
+ * Uploading Controller.
+ * Accepts multipart-file as request-param and save the picture in the file system
+ * besides mapping it to its owner in the DB.
+ */
 @Controller
 @RequestMapping("/upload")
 public class UploadController {
@@ -37,7 +43,12 @@ public class UploadController {
 		if (opUser.isPresent())
 		{
 			logger.info("Calling service upload !");
-			userServiceDb.uploadImage(opUser.get(), multipartFile);
+			try {
+				userServiceDb.uploadImage(opUser.get(), multipartFile);
+			}
+			catch (Exception e)
+			{
+			}
 		}
 		return "redirect:/dashboard";
 	}

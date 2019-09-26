@@ -7,6 +7,9 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import xbc.jb.socialvg.refinv.properties.WebappProperties;
 
+/**
+ * Configuration class for the Web MVC, Managing resources.
+ */
 @Configuration
 @EnableWebMvc
 public class WebMvcConfig implements WebMvcConfigurer {

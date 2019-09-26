@@ -13,11 +13,10 @@ import xbc.jb.socialvg.refinv.domain.User;
 import xbc.jb.socialvg.refinv.service.UserServiceDb;
 
 import javax.validation.Valid;
-import java.util.Collections;
 import java.util.Optional;
 
 /**
- *
+ * Signing-up form Controller.
  */
 @Controller
 @RequestMapping("/signup")
@@ -56,7 +55,6 @@ public class SignupController {
 			user.setPassword(validUuser.getPassword());
 			user.setEmail(validUuser.getEmail());
 			userServiceDb.save(user);
-			System.out.println("saved ++++++++++++++++++++++++");
 			return "redirect:/signin";
 		}
         catch (Exception e)

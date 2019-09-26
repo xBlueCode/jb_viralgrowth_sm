@@ -36,6 +36,7 @@ public class UserServiceDb implements UserService{
     private WebappProperties webappProperties;
     private PhotoServiceDb photoServiceDb;
 
+
     @Autowired
 	public UserServiceDb(UserRepository userRepository, UserPageRepository userPageRepository, PasswordEncoder passwordEncoder, WebappProperties webappProperties, PhotoServiceDb photoServiceDb) {
 		this.userRepository = userRepository;
@@ -44,6 +45,7 @@ public class UserServiceDb implements UserService{
 		this.webappProperties = webappProperties;
 		this.photoServiceDb = photoServiceDb;
 	}
+
 
 	@Override
     public void save(User user)
@@ -57,12 +59,8 @@ public class UserServiceDb implements UserService{
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         generateRCode(user);
         userRepository.save(user);
-
-/*		Photo image = photoServiceDb.newDefault();
-		user = findUserByUsername(user.getUsername()).get();
-		user.getPhotos().add(image);
-		update(user);*/
     }
+
 
     @Override
     public void delete(User user)
@@ -97,6 +95,7 @@ public class UserServiceDb implements UserService{
             throw new UsernameNotFoundException(username);
     }
 
+
 	@Override
 	public List<User> findAll() {
 		return userRepository.findAll();
@@ -109,6 +108,7 @@ public class UserServiceDb implements UserService{
 		return page;
 	}
 
+
 	@Override
 	public Page<User> findPageSafe(Pageable pageRequest) {
 
@@ -117,6 +117,7 @@ public class UserServiceDb implements UserService{
 			user.setPassword("");
 		return page;
 	}
+
 
 	@Override
 	public void updateScore(User invitedUser, int lev) {
@@ -133,19 +134,14 @@ public class UserServiceDb implements UserService{
 		if (lev == 1)
 			opUser.get().addDirect(1L);
 		opUser.get().addScore(1.0 / lev);
-//		user.getInvitedUsers().add(invitedUser);
 		update(opUser.get());
 		updateScore(opUser.get(), lev +  1);
 	}
 
+
 	@Override
 	public long count() {
 		return userRepository.count();
-	}
-
-	@Override
-	public long countAllByRCode(String rCode) {
-		return userRepository.countAllByRCode(rCode);
 	}
 
 
@@ -177,6 +173,7 @@ public class UserServiceDb implements UserService{
 		}
 	}
 
+
 	@Override
 	public Page<User> findAllByRCode(String rCode, Pageable page) {
 		return userPageRepository.findAllByRCode(rCode, page);
@@ -195,6 +192,8 @@ public class UserServiceDb implements UserService{
 		return page;
 	}
 
+
+
 	@Override
 	public void uploadImage(User user, MultipartFile multipartFile) {
 		String folder = webappProperties.getPath().getImageFolder()
@@ -212,13 +211,11 @@ public class UserServiceDb implements UserService{
 			photo.setProfile(true);
 			photoServiceDb.save(photo);
 			user.getPhotos().add(photo);
-//			user.setImgpro(image);
 			update(user);
 		}
 		catch (Exception e)
 		{
 			logger.info("Failed to upload !");
-			e.printStackTrace();
 		}
 	}
 }

@@ -13,6 +13,10 @@ import xbc.jb.socialvg.refinv.service.UserServiceDb;
 
 import java.util.Optional;
 
+
+/**
+ * Dashboard Controller - (Main user profile page)
+ */
 @Controller
 @RequestMapping("/dashboard")
 public class DashboardController {
@@ -24,6 +28,12 @@ public class DashboardController {
 	@Autowired
 	private UserServiceDb userServiceDb;
 
+	/**
+	 * Provide `dashboard` view with the model `currentUser` which is the current authenticated user, or redirect to the
+	 * main page otherwise.
+	 * @param model
+	 * @return
+	 */
 	@GetMapping
 	public String dashboard(Model model)
 	{

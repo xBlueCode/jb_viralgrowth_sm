@@ -2,7 +2,7 @@
 ## Spring DATASOURCE (DataSourceAutoConfiguration & DataSourceProperties)
 spring:
   datasource:
-    url: jdbc:h2:mem:vg_sm
+    url: jdbc:h2:mem:vg_sm # mysql-url...
     username: xbc_u
     password: xbc_p
   h2:
@@ -16,7 +16,7 @@ spring:
 #        jdbc:
 #          time_zone: +03:00
     hibernate:
-      ddl-auto: create # create, update
+      ddl-auto: create # update
     database: h2 # mysql
   servlet:
     multipart:

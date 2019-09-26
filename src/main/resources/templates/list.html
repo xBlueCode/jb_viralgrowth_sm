@@ -16,8 +16,6 @@
 		<div class="showcase card-nosh" style="height: 100%">
 			<div class="showcase-title card card-colored-0" style="padding: 16px">
 				<h2 th:text="${title}"></h2>
-<!--				<h3>Handling auto fitting</h3>-->
-<!--				<p>Using auto-fit and minmax()</p>-->
 			</div>
 
 			<div class="showcase-title card card-colored-0">
@@ -47,7 +45,7 @@
 			<div class="showcase-container progrid", style="height: 100%">
 				<div th:each="user : ${list}">
 					<div class="card procard">
-						<div class="procard-img-cont card-colored-4">
+						<div class="procard-img-cont">
 <!--							<img src="/images/default/cvpic.png" class="proimg">-->
 							<img class="proimg" th:if="${user.photos.size() != 0}"
 									 th:src="${user.photos[user.photos.size() - 1].path}">
@@ -58,13 +56,13 @@
 						</div>
 
 						<div class="procard-row">
-							<p class="procard-title">
-								Abdelfettah Besbes
+							<p class="procard-title" th:text="${user.username}">
+<!--								Abdelfettah Besbes-->
 							</p>
 						</div>
 						<div class="procard-row">
-							<p class="procard-sub-title">
-								Student at UnitFactory
+							<p class="procard-sub-title" th:text="${user.email}">
+<!--								Student at UnitFactory-->
 							</p>
 						</div>
 
@@ -102,7 +100,7 @@
 
 						<div class="procard-row">
 							<div class="card procard-button">
-								<p class="procard-label-txt-l procard-label-txt">View Profile </p>
+								<p class="procard-label-txt-l procard-label-txt" onclick="viewmore()">View More ..</p>
 <!--								<i class="far fa-eye" style="color: #222222; margin: 16px"></i>-->
 							</div>
 						</div>
@@ -111,19 +109,6 @@
 						</div>
 					</div>
 
-					<!--<div class="card card-element card-colored-1 fcard ">
-						<p class="form-label" th:text="${user.username}"></p>
-						<br/>
-						<p class="form-label" th:text="${user.email}"></p>
-						<br/>
-						<p class="form-label" th:text="${user.rCode}"></p>
-						<br/>
-						<p class="form-label" th:text="${user.iCode}"></p>
-						<br/>
-						<p class="form-label" th:text="${user.score}"></p>
-						<br/>
-						<p class="form-label" th:text="${user.invitees}"></p>
-					</div>-->
 				</div>
 			</div>
 
@@ -139,18 +124,13 @@
 						    location.replace(url);
 						}
 				}
+				function viewmore() {
+						alert("Not implemented yet !");
+        }
 			</script>
 		</div>
 	</div>
 
-	<!--<ul>-->
-	<!--    <li>-->
-	<!--        <a href="/dashboard/refer">Refer and earn</a>-->
-	<!--    </li>-->
-	<!--    <li>-->
-	<!--        <a href="/logout">Logout</a>-->
-	<!--    </li>-->
-	<!--</ul>-->
 </div>
 </body>
 </html>

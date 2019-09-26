@@ -12,6 +12,9 @@ import xbc.jb.socialvg.refinv.domain.User;
 
 import java.util.Optional;
 
+/**
+ * Invitation Controller
+ */
 @Controller
 @RequestMapping("/invite")
 public class InviteController {
@@ -21,6 +24,12 @@ public class InviteController {
 	@Autowired
 	private UserSecurityService userSecurityService;
 
+	/**
+	 * Redirect to the sign-up page and Fill the field `activation code` with the code provided in the request param.
+	 * @param icode
+	 * @param model
+	 * @return
+	 */
 	@GetMapping
 	public String showSigninForm(@RequestParam("code") String icode, Model model)
 	{

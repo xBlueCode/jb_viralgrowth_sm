@@ -16,6 +16,10 @@ import xbc.jb.socialvg.refinv.service.UserServiceDb;
 import java.util.Collections;
 import java.util.Optional;
 
+/**
+ * List Controller
+ * Provides 3 kinds of listing: All, All Invited and Directly Invited.
+ */
 @Controller
 @RequestMapping("/list")
 public class ListController {
@@ -31,8 +35,17 @@ public class ListController {
 		this.webappProperties = webappProperties;
 	}
 
+	/**
+	 * Handles a list request, accepts `type` and `page` as parameters to serve the appropriate data.
+	 * `page`:: page index;
+	 * `type`:: {0: all, 1: all-invited, 2: directly-invited}
+	 * @param model The model provided to the list template.
+	 * @param type The type of the list.
+	 * @param pageN The index of the requested page.
+	 * @return
+	 */
 	@GetMapping
-	public String dashboard(Model model, @RequestParam("type") int type, @RequestParam("page") int pageN)
+	public String list(Model model, @RequestParam("type") int type, @RequestParam("page") int pageN)
 	{
 		Optional<User> opUser = userSecurityService.getAuthenticatedUser();
 		if (!opUser.isPresent())

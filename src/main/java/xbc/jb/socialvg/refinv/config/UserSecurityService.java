@@ -19,7 +19,7 @@ import xbc.jb.socialvg.refinv.service.UserServiceDb;
 import java.util.Optional;
 
 /**
- *
+ * Utilities for User authentication
  */
 @Component
 public class UserSecurityService {
@@ -27,8 +27,6 @@ public class UserSecurityService {
     private UserServiceDb userServiceDb;
     private AuthenticationManager authenticationManager;
     private PasswordEncoder passwordEncoder;
-
-    //private DaoAuthenticationProvider daoAuthenticationProvider;
 
     private static final Logger logger = LoggerFactory.getLogger(UserSecurityService.class);
 
@@ -39,6 +37,10 @@ public class UserSecurityService {
         this.passwordEncoder = passwordEncoder;
     }
 
+    /**
+     * Get the current authenticated user
+     * @return
+     */
     public Optional<User> getAuthenticatedUser()
     {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -48,6 +50,11 @@ public class UserSecurityService {
             return userServiceDb.findUserByUsername(auth.getName());
     }
 
+    /**
+     * Authenticate a user upon login.
+     * @param user The user to be authenticated.
+     * @return true if the authentication is successful and false otherwise.
+     */
     public boolean authenticate(UserDetails user)
     {
         UserDetails userDetails = userServiceDb.loadUserByUsername(user.getUsername());

@@ -13,14 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import xbc.jb.socialvg.refinv.config.UserSecurityService;
 import xbc.jb.socialvg.refinv.domain.User;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.validation.Valid;
 import java.util.Optional;
 
 /**
- *
+ * Signing-in form Controller.
  */
 @Controller
 @RequestMapping("/signin")

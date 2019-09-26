@@ -30,12 +30,30 @@ public interface UserService extends UserDetailsService {
 
 	void updateScore(User invitedUser, int lev);
 
+	/**
+	 * Count all the users.
+	 * @return The count of all users.
+	 */
 	long count();
 
-	long countAllByRCode(String rCode);
+
+	/**
+	 * Count all users who are invited by the same iCode.
+	 * @param iCode The invitation code.
+	 * @return The count of users who have the same iCode.
+	 */
 	long countAllByICode(String iCode);
 
+	/**
+	 * Generate a new Referral Code.
+	 * @param user The targeted user.
+	 */
 	void generateRCode(User user);
 
+	/**
+	 * Save the file in the file-system and map it to the user(owner) in the DB.
+	 * @param user
+	 * @param multipartFile
+	 */
 	void uploadImage(User user, MultipartFile multipartFile);
 }

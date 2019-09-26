@@ -1,23 +1,44 @@
 <!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
-
+      xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{fragments/layout :: layout (~{::body},'dashboard')}">
 <head>
-    <meta charset="UTF-8">
-    <title> Unit City </title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/layout.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/grid.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/component.css}"/>
 </head>
-<body>
+<body >
+<div class="abs">
+    <div>
+        <div class="showcase card card-colored-0">
+            <div class="showcase-title">
+                <h2 style="color: orangered">Welcome !</h2>
+            </div>
+            <div class="showcase-container">
+                <div class="card-nosh card-element Without-grids">
 
-<h1>Unit City Friends</h1>
+                    <div style="margin: 8px 0"></div>
+                    <form th:action="@{/signin}" th:method="get">
+                        <div class="form-container">
+                            <div class="form-field">
+                                <input class="card-nosh button box-sh" type='submit' value='Sign in'>
+                            </div>
+                        </div>
+                    </form>
+                    <div style="margin: 8px 0"></div>
+                    <form th:action="@{/signup}" th:method="get">
+                        <div class="form-container">
+                            <div class="form-field">
+                                <input class="card-nosh button box-sh" type='submit' value='Sign up'>
+                            </div>
+                        </div>
+                    </form>
 
-<h3>Actions</h3>
-
-<ul>
-    <li> <a href="/signup">Sign up</a></li>
-    <li> <a href="/signin">Sign in</a></li>
-    <li> <a href="/about-us">About us!</a></li>
-</ul>
-
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

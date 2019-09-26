@@ -22,7 +22,7 @@ body {
 body {
     padding: 10px;
     background: var(--color-nav-1);
-    background: #eee;
+    /*background: #eee;*/
     font-family: 'lato', sans-serif;
     max-width: 1200px;
     margin: 60px auto 0 auto;
@@ -108,14 +108,6 @@ body {
     justify-content: space-between;
     transition: background-color .4s ease;
 }
-
-
-/*
-.fixnav-left .elem:hover{
-    background: var(--color-nav-1);
-    background: #fff;
-}
-*/
 
 
 .fixnav-left .hoverable:hover{

@@ -20,7 +20,7 @@ import javax.validation.Valid;
 import java.util.Optional;
 
 /**
- *
+ * Signing-out form Controller.
  */
 @Controller
 @RequestMapping("/signout")
@@ -37,7 +37,6 @@ public class SignoutController {
 		Optional<User> opUser = userSecurityService.getAuthenticatedUser();
 		if (!opUser.isPresent())
 			return "redirect:/";
-		//model.addAttribute("user", new User());
 		return "/signout";
 	}
 
