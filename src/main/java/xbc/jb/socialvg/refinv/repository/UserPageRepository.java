@@ -12,4 +12,6 @@ public interface UserPageRepository extends PagingAndSortingRepository<User, Lon
 	Page<User>	findAll(Pageable pageable);
 
 	Page<User>	findAllByRCode(String rCode, Pageable page);
+
+	Page<User>	findAllByICode(String iCode, Pageable page);
 }

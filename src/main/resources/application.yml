@@ -18,10 +18,10 @@ spring:
     hibernate:
       ddl-auto: create # create, update
     database: h2 # mysql
-#  servlet:
-#    multipart:
-#      enabled: true
-#      max-file-size: 2MB
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 2MB
 server:
   port: 8080
 webapp:

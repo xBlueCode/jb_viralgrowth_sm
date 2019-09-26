@@ -15,7 +15,7 @@
 	<div style="height: 100%">
 		<div class="showcase card-nosh" style="height: 100%">
 			<div class="showcase-title card card-colored-0" style="padding: 16px">
-				<h2>List of users</h2>
+				<h2 th:text="${title}"></h2>
 <!--				<h3>Handling auto fitting</h3>-->
 <!--				<p>Using auto-fit and minmax()</p>-->
 			</div>
@@ -49,7 +49,10 @@
 					<div class="card procard">
 						<div class="procard-img-cont card-colored-4">
 <!--							<img src="/images/default/cvpic.png" class="proimg">-->
-							<img class="proimg" th:src="${user.photos[user.photos.size() - 1].path}">
+							<img class="proimg" th:if="${user.photos.size() != 0}"
+									 th:src="${user.photos[user.photos.size() - 1].path}">
+							<img class="proimg" th:unless="${user.photos.size() != 0}"
+									 th:src="@{images/default/cvpic.png}">
 						</div>
 						<div class="card-colored-4 procard-row procard-bar">
 						</div>

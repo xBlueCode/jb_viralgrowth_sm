@@ -5,4 +5,5 @@ import xbc.jb.socialvg.refinv.domain.Photo;
 
 public interface PhotoRepository extends JpaRepository<Photo, Long> {
 
+	Photo save(Photo photo);
 }

@@ -15,7 +15,10 @@
 <body>
 <div class="fixnav fixnav-left">
 
-	<div class="img-cont">
+	<div class="img-cont" th:if="${currentUser.photos.size() == 0}">
+		<img th:src="@{/images/default/cvpic.png}">
+	</div>
+	<div class="img-cont" th:unless="${currentUser.photos.size() == 0}">
 		<img th:src="${currentUser.photos[currentUser.photos.size() - 1].path}">
 	</div>
 

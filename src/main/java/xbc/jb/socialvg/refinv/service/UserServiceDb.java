@@ -58,10 +58,9 @@ public class UserServiceDb implements UserService{
         generateRCode(user);
         userRepository.save(user);
 
-/*		Photo photo = photoServiceDb.newDefault();
+/*		Photo image = photoServiceDb.newDefault();
 		user = findUserByUsername(user.getUsername()).get();
-		user.getPhotos().add(photo);
-//		user.s(image);
+		user.getPhotos().add(image);
 		update(user);*/
     }
 
@@ -149,6 +148,12 @@ public class UserServiceDb implements UserService{
 		return userRepository.countAllByRCode(rCode);
 	}
 
+
+	@Override
+	public long countAllByICode(String iCode) {
+		return userRepository.countAllByICode(iCode);
+	}
+
 	@Override
 	public void generateRCode(User user) {
 
@@ -173,8 +178,13 @@ public class UserServiceDb implements UserService{
 	}
 
 	@Override
-	public Page<User> findAllByRCodeAnd(String rCode, Pageable page) {
+	public Page<User> findAllByRCode(String rCode, Pageable page) {
 		return userPageRepository.findAllByRCode(rCode, page);
+	}
+
+	@Override
+	public Page<User> findAllByICode(String iCode, Pageable page) {
+		return userPageRepository.findAllByICode(iCode, page);
 	}
 
 	@Override

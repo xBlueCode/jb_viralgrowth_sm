@@ -23,7 +23,8 @@ public interface UserService extends UserDetailsService {
     List<User> findAll();
 	Page<User> findPage(Pageable pageRequest);
 	Page<User> findPageSafe(Pageable pageRequest);
-	Page<User> findAllByRCodeAnd(String rCode, Pageable page);
+	Page<User> findAllByRCode(String rCode, Pageable page);
+	Page<User> findAllByICode(String iCode, Pageable page);
 
 	Page<User> pageHidePassword(Page<User> page);
 
@@ -32,6 +33,7 @@ public interface UserService extends UserDetailsService {
 	long count();
 
 	long countAllByRCode(String rCode);
+	long countAllByICode(String iCode);
 
 	void generateRCode(User user);
 

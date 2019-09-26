@@ -19,10 +19,10 @@ public class PhotoServiceDb implements PhotoService {
 	}
 
 	@Override
-	public void save(Photo photo) {
+	public Photo save(Photo photo) {
 		if (photo == null)
-			return;
-		photoRepository.save(photo);
+			return null;
+		return photoRepository.save(photo);
 	}
 
 	@Override
@@ -40,8 +40,8 @@ public class PhotoServiceDb implements PhotoService {
 		Photo photo = new Photo();
 		photo.setProfile(true);
 		photo.setPath(webappProperties.getPath().getProfileDefImg());
-		System.out.println(photo.getPath());
-		save(photo);
-		return (photo);
+//		System.out.println(photo.getPath());
+		return save(photo);
+		//return (photo);
 	}
 }

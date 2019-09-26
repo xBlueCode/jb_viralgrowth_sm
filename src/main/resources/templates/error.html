@@ -13,25 +13,20 @@
 	<div>
 		<div class="showcase card card-colored-0">
 			<div class="showcase-title">
-				<h2>Sign out</h2>
+				<h2 style="color: orangered">Ooops ! Something went wrong !</h2>
 			</div>
 			<div class="showcase-container">
 				<div class="card-nosh card-element Without-grids">
-					<form action="#" th:action="@{/signout}" th:method="post">
-						<div class="form-container">
-							<div class="form-field">
-								<input class="card-nosh button box-sh" type='submit' value='Sign out'>
-							</div>
-						</div>
-					</form>
+
 					<div style="margin: 8px 0"></div>
-					<form action="#" th:action="@{/dashboard}" th:method="get">
+					<form th:action="@{/}" th:method="get">
 						<div class="form-container">
 							<div class="form-field">
-								<input class="card-nosh button box-sh" type='submit' value='Go back to Dashboard'>
+								<input class="card-nosh button box-sh" type='submit' value='Save me !'>
 							</div>
 						</div>
 					</form>
+
 				</div>
 			</div>
 		</div>

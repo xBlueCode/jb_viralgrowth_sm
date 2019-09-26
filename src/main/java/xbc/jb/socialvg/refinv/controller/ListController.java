@@ -47,13 +47,19 @@ public class ListController {
 			{
 				usersPage = userServiceDb.findPage(PageRequest.of(pageN - 1, pageSize));
 				count = userServiceDb.count();
+				model.addAttribute("title", "All Users");
+			}
+			else if (type == 1)
+			{
+				model.addAttribute("title", "All Invited");
 			}
 			else if (type == 2)
 			{
-				usersPage = userServiceDb.findAllByRCodeAnd(
-						opUser.get().getrCode(),
+				usersPage = userServiceDb.findAllByICode(
+						opUser.get().getiCode(),
 						PageRequest.of(pageN - 1, pageSize));
-				count = userServiceDb.countAllByRCode(opUser.get().getrCode());
+				count = userServiceDb.countAllByICode(opUser.get().getiCode());
+				model.addAttribute("title", "Directly Invited");
 			}
 			if (usersPage == null)
 				throw new NullPointerException();

@@ -21,7 +21,8 @@ public class WebMvcConfig implements WebMvcConfigurer {
 				.addResourceLocations(
 						"classpath:/static/css/",
 						"classpath:/images/",
-						"file:/")
-		.setCachePeriod(0);
+						"file:/"
+						//String.format("file:%s", webappProperties.getPath().getImageFolder()))
+				).setCachePeriod(0);
 	}
 }

@@ -13,6 +13,7 @@ import xbc.jb.socialvg.refinv.domain.User;
 import xbc.jb.socialvg.refinv.service.UserServiceDb;
 
 import javax.validation.Valid;
+import java.util.Collections;
 import java.util.Optional;
 
 /**
@@ -39,16 +40,21 @@ public class SignupController {
     }
 
     @PostMapping
-    public String signup(@ModelAttribute("user") @Valid User user, BindingResult bindingResult)
+    public String signup(@ModelAttribute("user") @Valid User validUuser, BindingResult bindingResult)
     {
     	try {
-			if (userServiceDb.findUserByUsername(user.getUsername()).isPresent())
+			if (userServiceDb.findUserByUsername(validUuser.getUsername()).isPresent())
 				bindingResult.rejectValue(
 						"username",
 						null,
 						"There is already an account with that username !");
 			if (bindingResult.hasErrors())
 				return "signup";
+
+			User user = new User();
+			user.setUsername(validUuser.getUsername());
+			user.setPassword(validUuser.getPassword());
+			user.setEmail(validUuser.getEmail());
 			userServiceDb.save(user);
 			System.out.println("saved ++++++++++++++++++++++++");
 			return "redirect:/signin";

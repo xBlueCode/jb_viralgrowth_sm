@@ -23,7 +23,6 @@ public class InitializerDb implements CommandLineRunner {
 		String lastRcode = new String("");
 		for (int i = 0; i < 20; i++)
 		{
-
 			User user = new User();
 			user.setUsername(String.format("us%02d", i));
 			user.setPassword(String.format("pass%d", i));
@@ -32,10 +31,6 @@ public class InitializerDb implements CommandLineRunner {
 			user.setEmail(String.format("user%d@gmail.com", i));
 //			user.setInvitedUsers(Collections.EMPTY_SET);
 			userServiceDb.save(user);
-			Photo image = photoServiceDb.newDefault();
-			user = userServiceDb.findUserByUsername(user.getUsername()).get();
-			user.getPhotos().add(image);
-			userServiceDb.update(user);
 			if (i == 10)
 				System.out.println(lastRcode);
 			lastRcode = user.getrCode();

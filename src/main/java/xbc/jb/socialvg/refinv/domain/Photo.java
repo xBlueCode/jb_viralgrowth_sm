@@ -3,6 +3,7 @@ package xbc.jb.socialvg.refinv.domain;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
@@ -11,8 +12,9 @@ import javax.validation.constraints.NotEmpty;
 @Component
 @Data // lombok
 @Entity
-//@Table(name = "photo")
+@Table(name = "photo")
 @NoArgsConstructor
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class Photo {
 
 	@Id
