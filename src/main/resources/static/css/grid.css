@@ -25,12 +25,17 @@ header {
 	text-decoration: none;
 	font-size: 28px;
 	color: rgba(52, 152, 219,1.0);
-	font-weight: bold;
-	margin: 0 0 0 32px;
+	font-weight: bolder;
+	/*margin: 0 0 0 32px;*/
 	align-self: center;
 	text-shadow: 0 0 .5px black;
 /*	border-right: 1px solid rgba(52, 73, 94,1.0);*/
 	/* text-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23); */
+	transition: color .4s ease;
+}
+.logo:hover{
+	color: #fff;
+	cursor: pointer;
 }
 
 .navlist{
@@ -287,7 +292,7 @@ a[id="fb"]{
 	left: 0;
 	z-index: 10;
 	border-radius: 0;
-	margin: 0 0 48px 0;
+	/*margin: 0 0 48px 0;*/
 	padding: 10px;
 
 }

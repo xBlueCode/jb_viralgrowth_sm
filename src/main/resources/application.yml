@@ -11,7 +11,8 @@ spring:
   jpa:
     properties:
       dialect: org.hibernate.dialect.MySQL5InnoDBDialect
-#      hibernate:
+      hibernate:
+        enable_lazy_load_no_trans: true
 #        jdbc:
 #          time_zone: +03:00
     hibernate:

@@ -14,10 +14,7 @@ import xbc.jb.socialvg.refinv.properties.WebappProperties;
 import xbc.jb.socialvg.refinv.repository.UserPageRepository;
 import xbc.jb.socialvg.refinv.service.UserServiceDb;
 
-import java.awt.print.Pageable;
-import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -52,7 +49,7 @@ public class ListController {
 				usersPage = userServiceDb.findPage(PageRequest.of(pageN - 1, pageSize));
 				count = userServiceDb.count();
 			}
-			else if (type == 1)
+			else if (type == 2)
 			{
 				usersPage = userServiceDb.findAllByRCodeAnd(
 						opUser.get().getrCode(),

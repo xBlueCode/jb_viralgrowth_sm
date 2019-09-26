@@ -6,6 +6,8 @@ import org.springframework.stereotype.Component;
 import xbc.jb.socialvg.refinv.domain.User;
 import xbc.jb.socialvg.refinv.service.UserServiceDb;
 
+import java.util.Collections;
+
 @Component
 public class InitializerDb implements CommandLineRunner {
 
@@ -23,6 +25,7 @@ public class InitializerDb implements CommandLineRunner {
 			if (i > 0)
 				user.setiCode(lastRcode);
 			user.setEmail(String.format("user%d@gmail.com", i));
+//			user.setInvitedUsers(Collections.EMPTY_SET);
 			userServiceDb.save(user);
 			if (i == 10)
 				System.out.println(lastRcode);

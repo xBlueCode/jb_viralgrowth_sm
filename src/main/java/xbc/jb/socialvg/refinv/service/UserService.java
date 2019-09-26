@@ -25,7 +25,7 @@ public interface UserService extends UserDetailsService {
 
 	Page<User> pageHidePassword(Page<User> page);
 
-	void updateScore(String rCode, int l);
+	void updateScore(User invitedUser, int lev);
 
 	long count();
 

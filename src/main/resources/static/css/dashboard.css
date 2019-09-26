@@ -81,7 +81,7 @@ body {
     border: solid .5px rgba(0,0,0,0.1);
 }
 
-.fixnav A, box a {
+.fixnav a, box a {
     padding: 8px 8px 8px 16px;
     text-decoration: none;
     font-size: 14px;
@@ -90,7 +90,12 @@ body {
     transition: background-color .4s ease;
 }
 
-.fixnav a:hover, .box a {
+.fixnav a:hover {
+    background: var(--color-nav-1);
+    /*background: #fff;*/
+}
+
+.fixnav a:active {
     background: var(--color-nav-1);
 }
 

@@ -11,12 +11,12 @@ import org.springframework.stereotype.Component;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
-import java.util.Collection;
-import java.util.Optional;
+import java.util.*;
 
 /**
  *
  */
+
 @Component
 @Data // lombok
 @Entity
@@ -156,4 +156,5 @@ public class User implements UserDetails {
     public void addDirect(Long n) {
         this.direct += n;
     }
+
 }

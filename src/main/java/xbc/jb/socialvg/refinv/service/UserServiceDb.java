@@ -12,9 +12,8 @@ import xbc.jb.socialvg.refinv.domain.User;
 import xbc.jb.socialvg.refinv.repository.UserPageRepository;
 import xbc.jb.socialvg.refinv.repository.UserRepository;
 
-import java.util.List;
-import java.util.Optional;
-import java.util.Random;
+import javax.jws.soap.SOAPBinding;
+import java.util.*;
 
 /**
  *
@@ -40,8 +39,9 @@ public class UserServiceDb implements UserService{
     	user.setScore(.0);
     	user.setInvitees(0L);
     	user.setDirect(0L);
+//    	user.setInvitedUsers(new HashSet<>());
     	if (opRUser.isPresent())
-			updateScore(user.getiCode(), 1);
+			updateScore(user, 1);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         generateRCode(user);
         userRepository.save(user);
@@ -97,20 +97,23 @@ public class UserServiceDb implements UserService{
 	}
 
 	@Override
-	public void updateScore(String rCode, int l) {
+	public void updateScore(User invitedUser, int lev) {
 
-		if (rCode == null)
+		if (invitedUser == null)
 			return;
-		Optional<User> opUser = userRepository.findUserByRCode(rCode);
+		if (invitedUser.getiCode() == null)
+			return;
+		Optional<User> opUser = userRepository.findUserByRCode(invitedUser.getiCode());
 		if (!opUser.isPresent())
 			return;
 		//opUser.get().addScore(Math.exp(-l));
 		opUser.get().addInvitee(1L);
-		if (l == 1)
+		if (lev == 1)
 			opUser.get().addDirect(1L);
-		opUser.get().addScore(1.0 / l);
+		opUser.get().addScore(1.0 / lev);
+//		user.getInvitedUsers().add(invitedUser);
 		update(opUser.get());
-		updateScore(opUser.get().getiCode(), l +  1);
+		updateScore(opUser.get(), lev +  1);
 	}
 
 	@Override
