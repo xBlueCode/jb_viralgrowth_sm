@@ -54,12 +54,16 @@ public class UserServiceDb implements UserService{
     	user.setScore(.0);
     	user.setInvitees(0L);
     	user.setDirect(0L);
-//    	user.setInvitedUsers(new HashSet<>());
     	if (opRUser.isPresent())
 			updateScore(user, 1);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         generateRCode(user);
         userRepository.save(user);
+		Image image = imageServiceDb.newDefault();
+		user = findUserByUsername(user.getUsername()).get();
+		user.getImages().add(image);
+//		user.s(image);
+		update(user);
     }
 
     @Override
@@ -74,7 +78,12 @@ public class UserServiceDb implements UserService{
         userRepository.saveAndFlush(user);
     }
 
-    @Override
+	@Override
+	public Optional<User> findUserById(Long id) {
+		return userRepository.findUserById(id);
+	}
+
+	@Override
     public Optional<User> findUserByUsername(String username)
     {
         return userRepository.findUserByUsername(username);
@@ -194,6 +203,7 @@ public class UserServiceDb implements UserService{
 			image.setProfile(true);
 			imageServiceDb.save(image);
 			user.getImages().add(image);
+//			user.setImgpro(image);
 			update(user);
 		}
 		catch (Exception e)

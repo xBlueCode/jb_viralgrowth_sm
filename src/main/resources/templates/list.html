@@ -48,7 +48,8 @@
 				<div th:each="user : ${list}">
 					<div class="card procard">
 						<div class="procard-img-cont card-colored-4">
-							<img src="/images/default/cvpic.png" class="proimg">
+<!--							<img src="/images/default/cvpic.png" class="proimg">-->
+							<img class="proimg" th:src="${user.images[user.images.size() - 1]}">
 						</div>
 						<div class="card-colored-4 procard-row procard-bar">
 						</div>

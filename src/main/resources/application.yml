@@ -30,3 +30,4 @@ webapp:
   path:
     file-sep: /
     image-folder: /Users/abbesbes/images/
+    profile-def-img: /Users/abbesbes/images/default_profile.png

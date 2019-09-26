@@ -16,7 +16,7 @@
 <div class="fixnav fixnav-left">
 
 	<div class="img-cont">
-		<img src="/images/default/profile.png">
+		<img th:src="${currentUser.images[currentUser.images.size() - 1].path}">
 	</div>
 
 	<div class="nav-sep">
@@ -53,12 +53,13 @@
 			<p class="elem-mid">Invitation Code</p>
 		</div>
 		<div class="elem">
-			<p class="elem-mid inv-code" th:text="${currentUser.rCode}"></p>
+			<p id="rcode" class="elem-mid inv-code" th:text="${currentUser.rCode}"></p>
 		</div>
 	</div>
-	<div class="elem">
-		<div class="elem-mid"></div>
-		<div class="btn">Share</div>
+	<div class="elem elem-mid">
+		<div class="btn" onclick="copycode()">Share
+<!--			<div class="btn">Share</div>-->
+		</div>
 	</div>
 </div>
 
@@ -68,6 +69,16 @@
 	<div class="dash-core">
 		<th:block th:include="${template}"/>
 	</div>
+<script>
+function copycode() {
+		var rcode = document.getElementById("rcode");
+		alert("inn: " + rcode.innerText);
+    alert("val: " + rcode.innerText);
+		rcode.select();
+    document.execCommand("copy");
+    alert("Link has been copied !: " + rcode.value);
+}
+</script>
 </body>
 
 <html>

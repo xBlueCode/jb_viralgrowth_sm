@@ -10,4 +10,5 @@ public interface ImageService {
 	void save(Image image);
 	void delete(Image image);
 	void update(Image image);
+	Image newDefault();
 }

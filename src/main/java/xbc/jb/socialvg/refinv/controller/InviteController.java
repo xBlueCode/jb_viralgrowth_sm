@@ -16,7 +16,7 @@ import java.util.Optional;
 @RequestMapping("/invite")
 public class InviteController {
 
-	private Logger logger = LoggerFactory.getLogger(SigninController.class);
+	private Logger logger = LoggerFactory.getLogger(InviteController.class);
 
 	@Autowired
 	private UserSecurityService userSecurityService;

@@ -8,11 +8,11 @@ import org.springframework.stereotype.Component;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 
-//@Component
-//@Data // lombok
+@Component
+@Data // lombok
 @Entity
-//@Table(name = "images")
-//@NoArgsConstructor
+@Table(name = "image")
+@NoArgsConstructor
 public class Image {
 
 	@Id
@@ -22,7 +22,7 @@ public class Image {
 	@NotEmpty
 	private String path;
 
-	private boolean isProfile;
+	private boolean Profile;
 
 	public String getPath() {
 		return path;
@@ -32,11 +32,11 @@ public class Image {
 		this.path = path;
 	}
 
-	public boolean isProfile() {
-		return isProfile;
+	public boolean getProfile() {
+		return Profile;
 	}
 
 	public void setProfile(boolean profile) {
-		isProfile = profile;
+		Profile = profile;
 	}
 }

@@ -61,7 +61,8 @@ public class ListController {
 			model.addAttribute("list", userServiceDb.pageHidePassword(usersPage));
 			model.addAttribute("pageMax", pageMax);
 			model.addAttribute("type", type);
-			model.addAttribute("images", opUser.get().getImages().size());
+			model.addAttribute("images", 0);
+//			model.addAttribute("images", opUser.get().getImages().size());
 		}
 		catch (Exception e) {
 			model.addAttribute("list", Collections.EMPTY_LIST);

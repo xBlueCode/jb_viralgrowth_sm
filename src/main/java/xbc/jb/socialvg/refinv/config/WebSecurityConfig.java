@@ -66,8 +66,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
         http
                 .authorizeRequests()
-                .antMatchers("/", "/signup", "/signin", "/invite", "/css/**").permitAll()
-                .anyRequest().authenticated()
+                .antMatchers("/", "/signup", "/signin", "/invite", "/css/**", "/images/**").permitAll()
+                .anyRequest().authenticated();
 
                 /*.and()
                 .formLogin()
@@ -75,7 +75,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .successHandler(successHandler())
                 .defaultSuccessUrl("/dashboard", true)*/
-                ;
+                //;
 
 		//http.authorizeRequests().anyRequest().permitAll();
     }

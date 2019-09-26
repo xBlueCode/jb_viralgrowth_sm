@@ -26,7 +26,7 @@ import java.util.Optional;
 @RequestMapping("/signout")
 public class SignoutController {
 
-	private Logger logger = LoggerFactory.getLogger(SigninController.class);
+	private Logger logger = LoggerFactory.getLogger(SignoutController.class);
 
 	@Autowired
 	private UserSecurityService userSecurityService;

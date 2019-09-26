@@ -41,12 +41,15 @@ public class User implements UserDetails {
     @Length(min = 4, message = "Length must be bigger than 4 !")
     private String password;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(
             joinColumns = @JoinColumn(name = "USER_ID"),
             inverseJoinColumns = @JoinColumn(name = "IMAGE_ID")
     )
     private Set<Image> images;
+
+/*    @JoinColumn(name = "image_id")
+    private Image image;*/
 
 //    @Length(min=4, max=12, message = "Length must be between 4 and 12 !")
     private String iCode;
@@ -181,4 +184,12 @@ public class User implements UserDetails {
     public void setImages(Set<Image> images) {
         this.images = images;
     }
+
+/*    public Image getImage() {
+        return image;
+    }
+
+    public void setId(Image image) {
+        this.image = image;
+    }*/
 }

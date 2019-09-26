@@ -4,6 +4,7 @@ public class PathProperties {
 
 	private String imageFolder;
 	private String fileSep;
+	private String profileDefImg;
 
 	public String getImageFolder() {
 		return imageFolder;
@@ -19,5 +20,13 @@ public class PathProperties {
 
 	public void setFileSep(String fileSep) {
 		this.fileSep = fileSep;
+	}
+
+	public String getProfileDefImg() {
+		return profileDefImg;
+	}
+
+	public void setProfileDefImg(String profileDefImg) {
+		this.profileDefImg = profileDefImg;
 	}
 }
