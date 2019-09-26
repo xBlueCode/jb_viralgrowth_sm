@@ -119,6 +119,11 @@ public class UserServiceDb implements UserService{
 	}
 
 	@Override
+	public long countAllByRCode(String rCode) {
+		return userRepository.countAllByRCode(rCode);
+	}
+
+	@Override
 	public void generateRCode(User user) {
 
 		if (user == null || user.getUsername() == null)
@@ -139,5 +144,18 @@ public class UserServiceDb implements UserService{
 				break;
 			}
 		}
+	}
+
+	@Override
+	public Page<User> findAllByRCodeAnd(String rCode, Pageable page) {
+		return userPageRepository.findAllByRCode(rCode, page);
+	}
+
+	@Override
+	public Page<User> pageHidePassword(Page<User> page) {
+		if (page == null)
+			return page;
+		page.forEach(user -> user.setPassword(""));
+		return page;
 	}
 }

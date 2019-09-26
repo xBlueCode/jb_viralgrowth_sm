@@ -24,6 +24,10 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     Optional<User> findUserByRCode(String rCode);
 
+    List<User> findAllByRCode(String rCode);
+
+    long countAllByRCode(String rCode);
+
     List<User> findAll();
 
     long count();

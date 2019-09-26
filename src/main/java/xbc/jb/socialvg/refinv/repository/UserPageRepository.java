@@ -8,4 +8,6 @@ import xbc.jb.socialvg.refinv.domain.User;
 public interface UserPageRepository extends PagingAndSortingRepository<User, Long> {
 
 	Page<User>	findAll(Pageable pageable);
+
+	Page<User>	findAllByRCode(String rCode, Pageable page);
 }

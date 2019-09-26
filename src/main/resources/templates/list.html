@@ -25,7 +25,7 @@
 				<div class="showcase-title procard-row ltoolbar">
 
 					<button id="page_prev" class="ltoolbar-elem ltoolbar-tbutton"
-									th:onclick="'paginate(this, ' + ${pageMax} + ')'"> <
+									th:onclick="'paginate(this, ' + ${type} + ' , ' + ${pageMax} + ')'"> <
 					</button>
 
 					<div class="ltoolbar" style="background: rgba(52, 152, 219,1.0)">
@@ -38,7 +38,7 @@
 					</div>
 
 					<button id="page_next" class="ltoolbar-elem ltoolbar-tbutton"
-									th:onclick="'paginate(this, ' + ${pageMax} + ')'"> >
+									th:onclick="'paginate(this, ' + ${type} + ' , ' + ${pageMax} + ')'"> >
 					</button>
 
 				</div>
@@ -116,14 +116,14 @@
 			</div>
 
 			<script>
-				function paginate(paction, pageMax)
+				function paginate(paction, type , pageMax)
 				{
 				    // alert('act: ' + paction + 'max: ' + parseInt(pageMax))
 						var pagen = parseInt(document.getElementById('pagen').innerText);
 						pagen += 1 - 2 * (paction.id == "page_prev");
 						if (pagen > 0 & pagen <= pageMax)
 						{
-						    const url = '/list?page=' + pagen;
+						    const url = '/list?type='+ type + '&page=' + pagen;
 						    location.replace(url);
 						}
 				}

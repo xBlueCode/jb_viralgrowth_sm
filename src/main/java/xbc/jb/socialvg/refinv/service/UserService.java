@@ -21,10 +21,15 @@ public interface UserService extends UserDetailsService {
     List<User> findAll();
 	Page<User> findPage(Pageable pageRequest);
 	Page<User> findPageSafe(Pageable pageRequest);
+	Page<User> findAllByRCodeAnd(String rCode, Pageable page);
+
+	Page<User> pageHidePassword(Page<User> page);
 
 	void updateScore(String rCode, int l);
 
 	long count();
+
+	long countAllByRCode(String rCode);
 
 	void generateRCode(User user);
 }

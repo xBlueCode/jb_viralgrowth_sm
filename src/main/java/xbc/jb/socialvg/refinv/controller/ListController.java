@@ -15,6 +15,7 @@ import xbc.jb.socialvg.refinv.repository.UserPageRepository;
 import xbc.jb.socialvg.refinv.service.UserServiceDb;
 
 import java.awt.print.Pageable;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -35,23 +36,40 @@ public class ListController {
 	}
 
 	@GetMapping
-	public String dashboard(Model model, @RequestParam("type") String type, @RequestParam("page") int pageN)
+	public String dashboard(Model model, @RequestParam("type") int type, @RequestParam("page") int pageN)
 	{
 		Optional<User> opUser = userSecurityService.getAuthenticatedUser();
 		if (!opUser.isPresent())
 			return "redirect:/";
 		opUser.get().setPassword("");
 		model.addAttribute("currentUser", opUser.get());
+		long count = 0;
 		try{
 			int pageSize = webappProperties.getPaginationProperties().getPageSize();
-			long count = userServiceDb.count();
+			Page<User> usersPage = null;
+			if (type == 0)
+			{
+				usersPage = userServiceDb.findPage(PageRequest.of(pageN - 1, pageSize));
+				count = userServiceDb.count();
+			}
+			else if (type == 1)
+			{
+				usersPage = userServiceDb.findAllByRCodeAnd(
+						opUser.get().getrCode(),
+						PageRequest.of(pageN - 1, pageSize));
+				count = userServiceDb.countAllByRCode(opUser.get().getrCode());
+			}
+			if (usersPage == null)
+				throw new NullPointerException();
 			long pageMax = count / pageSize + ((count % pageSize) == 0 ? 0 : 1);
-			model.addAttribute("list", userServiceDb.findPageSafe(PageRequest.of(pageN - 1, pageSize)));
+			model.addAttribute("list", userServiceDb.pageHidePassword(usersPage));
 			model.addAttribute("pageMax", pageMax);
+			model.addAttribute("type", type);
 		}
 		catch (Exception e) {
 			model.addAttribute("list", Collections.EMPTY_LIST);
 			model.addAttribute("pageMax", 1);
+			model.addAttribute("type", type);
 			return "list";
 		}
 		return "list";
