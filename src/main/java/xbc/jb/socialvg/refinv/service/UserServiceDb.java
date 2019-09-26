@@ -179,11 +179,14 @@ public class UserServiceDb implements UserService{
 
 	@Override
 	public void uploadImage(User user, MultipartFile multipartFile) {
-		String folder = webappProperties.getPath().getImageFolder();
-
+		String folder = webappProperties.getPath().getImageFolder()
+				+ user.getUsername();
 		try {
 			byte[] bytes = multipartFile.getBytes();
-			Path fullPath = Paths.get(folder + multipartFile.getOriginalFilename());
+			Files.createDirectories(Paths.get(folder));
+			Path fullPath = Paths.get(folder
+					+ webappProperties.getPath().getFileSep()
+					+ multipartFile.getOriginalFilename());
 			logger.info(String.format("fullpath: %s", fullPath));
 			Files.write(fullPath, bytes);
 			Image image = new Image();
@@ -195,7 +198,7 @@ public class UserServiceDb implements UserService{
 		}
 		catch (Exception e)
 		{
-			logger.info("Failed !");
+			logger.info("Failed to upload !");
 			e.printStackTrace();
 		}
 	}

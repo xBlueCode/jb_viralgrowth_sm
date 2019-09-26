@@ -3,6 +3,7 @@ package xbc.jb.socialvg.refinv.properties;
 public class PathProperties {
 
 	private String imageFolder;
+	private String fileSep;
 
 	public String getImageFolder() {
 		return imageFolder;
@@ -10,5 +11,13 @@ public class PathProperties {
 
 	public void setImageFolder(String imageFolder) {
 		this.imageFolder = imageFolder;
+	}
+
+	public String getFileSep() {
+		return fileSep;
+	}
+
+	public void setFileSep(String fileSep) {
+		this.fileSep = fileSep;
 	}
 }

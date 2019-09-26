@@ -28,4 +28,5 @@ webapp:
   pagination:
     page-size: 4
   path:
+    file-sep: /
     image-folder: /Users/abbesbes/images/
