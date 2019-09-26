@@ -14,11 +14,21 @@ public class WebappProperties {
 
 	private PaginationProperties pagination;
 
-	public PaginationProperties getPaginationProperties() {
+	private PathProperties path;
+
+	public PaginationProperties getPagination() {
 		return pagination;
 	}
 
-	public void setPaginationProperties(PaginationProperties paginationProperties) {
+	public void setPagination(PaginationProperties paginationProperties) {
 		this.pagination = paginationProperties;
+	}
+
+	public PathProperties getPath() {
+		return path;
+	}
+
+	public void setPath(PathProperties path) {
+		this.path = path;
 	}
 }

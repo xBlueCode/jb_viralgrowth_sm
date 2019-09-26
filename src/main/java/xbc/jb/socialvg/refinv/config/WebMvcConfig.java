@@ -16,6 +16,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
 		// Register resource handler for CSS and JS
 		registry.addResourceHandler("/css/**", "/images/**")
 				.addResourceLocations("classpath:/static/css/",
-						"classpath:/images/");
+						"classpath:/images/")
+		.setCachePeriod(0);
 	}
 }

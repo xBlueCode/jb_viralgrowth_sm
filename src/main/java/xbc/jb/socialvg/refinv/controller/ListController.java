@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import xbc.jb.socialvg.refinv.config.UserSecurityService;
 import xbc.jb.socialvg.refinv.domain.User;
 import xbc.jb.socialvg.refinv.properties.WebappProperties;
-import xbc.jb.socialvg.refinv.repository.UserPageRepository;
 import xbc.jb.socialvg.refinv.service.UserServiceDb;
 
 import java.util.Collections;
@@ -42,7 +41,7 @@ public class ListController {
 		model.addAttribute("currentUser", opUser.get());
 		long count = 0;
 		try{
-			int pageSize = webappProperties.getPaginationProperties().getPageSize();
+			int pageSize = webappProperties.getPagination().getPageSize();
 			Page<User> usersPage = null;
 			if (type == 0)
 			{
@@ -62,11 +61,13 @@ public class ListController {
 			model.addAttribute("list", userServiceDb.pageHidePassword(usersPage));
 			model.addAttribute("pageMax", pageMax);
 			model.addAttribute("type", type);
+			model.addAttribute("images", opUser.get().getImages().size());
 		}
 		catch (Exception e) {
 			model.addAttribute("list", Collections.EMPTY_LIST);
 			model.addAttribute("pageMax", 1);
 			model.addAttribute("type", type);
+			model.addAttribute("images", -1);
 			return "list";
 		}
 		return "list";

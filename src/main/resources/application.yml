@@ -11,19 +11,21 @@ spring:
   jpa:
     properties:
       dialect: org.hibernate.dialect.MySQL5InnoDBDialect
-      hibernate:
-        enable_lazy_load_no_trans: true
+#      hibernate:
+#        enable_lazy_load_no_trans: true
 #        jdbc:
 #          time_zone: +03:00
     hibernate:
       ddl-auto: create # create, update
     database: h2 # mysql
-  servlet:
-    multipart:
-      enabled: true
-      max-file-size: 2MB
+#  servlet:
+#    multipart:
+#      enabled: true
+#      max-file-size: 2MB
 server:
   port: 8080
 webapp:
   pagination:
     page-size: 4
+  path:
+    image-folder: /Users/abbesbes/images/

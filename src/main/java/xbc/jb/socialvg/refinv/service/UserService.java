@@ -5,6 +5,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 import xbc.jb.socialvg.refinv.domain.User;
 
 import java.util.List;
@@ -32,4 +33,6 @@ public interface UserService extends UserDetailsService {
 	long countAllByRCode(String rCode);
 
 	void generateRCode(User user);
+
+	void uploadImage(User user, MultipartFile multipartFile);
 }

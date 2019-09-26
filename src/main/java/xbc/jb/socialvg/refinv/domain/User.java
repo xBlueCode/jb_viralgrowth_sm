@@ -41,8 +41,17 @@ public class User implements UserDetails {
     @Length(min = 4, message = "Length must be bigger than 4 !")
     private String password;
 
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            joinColumns = @JoinColumn(name = "USER_ID"),
+            inverseJoinColumns = @JoinColumn(name = "IMAGE_ID")
+    )
+    private Set<Image> images;
+
 //    @Length(min=4, max=12, message = "Length must be between 4 and 12 !")
     private String iCode;
+
+    private Long iId;
 
     private String rCode;
 
@@ -157,4 +166,19 @@ public class User implements UserDetails {
         this.direct += n;
     }
 
+    public Long getiId() {
+        return iId;
+    }
+
+    public void setiId(Long iId) {
+        this.iId = iId;
+    }
+
+    public Set<Image> getImages() {
+        return images;
+    }
+
+    public void setImages(Set<Image> images) {
+        this.images = images;
+    }
 }

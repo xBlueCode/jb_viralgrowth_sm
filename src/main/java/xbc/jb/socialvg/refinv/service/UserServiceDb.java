@@ -1,6 +1,8 @@
 package xbc.jb.socialvg.refinv.service;
 
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -8,11 +10,18 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+import xbc.jb.socialvg.refinv.controller.UploadController;
+import xbc.jb.socialvg.refinv.domain.Image;
 import xbc.jb.socialvg.refinv.domain.User;
+import xbc.jb.socialvg.refinv.properties.WebappProperties;
 import xbc.jb.socialvg.refinv.repository.UserPageRepository;
 import xbc.jb.socialvg.refinv.repository.UserRepository;
 
 import javax.jws.soap.SOAPBinding;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.*;
 
 /**
@@ -21,18 +30,24 @@ import java.util.*;
 @Service
 public class UserServiceDb implements UserService{
 
+	private Logger logger = LoggerFactory.getLogger(UserServiceDb.class);
+
     private UserRepository userRepository;
     private UserPageRepository userPageRepository;
     private PasswordEncoder passwordEncoder;
+    private WebappProperties webappProperties;
+    private ImageServiceDb imageServiceDb;
 
-	@Autowired
-	public UserServiceDb(UserRepository userRepository, UserPageRepository userPageRepository, PasswordEncoder passwordEncoder) {
+    @Autowired
+	public UserServiceDb(UserRepository userRepository, UserPageRepository userPageRepository, PasswordEncoder passwordEncoder, WebappProperties webappProperties, ImageServiceDb imageServiceDb) {
 		this.userRepository = userRepository;
 		this.userPageRepository = userPageRepository;
 		this.passwordEncoder = passwordEncoder;
+		this.webappProperties = webappProperties;
+		this.imageServiceDb = imageServiceDb;
 	}
 
-    @Override
+	@Override
     public void save(User user)
     {
     	Optional<User> opRUser = userRepository.findUserByRCode(user.getiCode());
@@ -160,5 +175,28 @@ public class UserServiceDb implements UserService{
 			return page;
 		page.forEach(user -> user.setPassword(""));
 		return page;
+	}
+
+	@Override
+	public void uploadImage(User user, MultipartFile multipartFile) {
+		String folder = webappProperties.getPath().getImageFolder();
+
+		try {
+			byte[] bytes = multipartFile.getBytes();
+			Path fullPath = Paths.get(folder + multipartFile.getOriginalFilename());
+			logger.info(String.format("fullpath: %s", fullPath));
+			Files.write(fullPath, bytes);
+			Image image = new Image();
+			image.setPath(fullPath.toString());
+			image.setProfile(true);
+			imageServiceDb.save(image);
+			user.getImages().add(image);
+			update(user);
+		}
+		catch (Exception e)
+		{
+			logger.info("Failed !");
+			e.printStackTrace();
+		}
 	}
 }
