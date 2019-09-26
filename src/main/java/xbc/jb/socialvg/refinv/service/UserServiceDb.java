@@ -11,14 +11,12 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-import xbc.jb.socialvg.refinv.controller.UploadController;
-import xbc.jb.socialvg.refinv.domain.Image;
+import xbc.jb.socialvg.refinv.domain.Photo;
 import xbc.jb.socialvg.refinv.domain.User;
 import xbc.jb.socialvg.refinv.properties.WebappProperties;
 import xbc.jb.socialvg.refinv.repository.UserPageRepository;
 import xbc.jb.socialvg.refinv.repository.UserRepository;
 
-import javax.jws.soap.SOAPBinding;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -36,15 +34,15 @@ public class UserServiceDb implements UserService{
     private UserPageRepository userPageRepository;
     private PasswordEncoder passwordEncoder;
     private WebappProperties webappProperties;
-    private ImageServiceDb imageServiceDb;
+    private PhotoServiceDb photoServiceDb;
 
     @Autowired
-	public UserServiceDb(UserRepository userRepository, UserPageRepository userPageRepository, PasswordEncoder passwordEncoder, WebappProperties webappProperties, ImageServiceDb imageServiceDb) {
+	public UserServiceDb(UserRepository userRepository, UserPageRepository userPageRepository, PasswordEncoder passwordEncoder, WebappProperties webappProperties, PhotoServiceDb photoServiceDb) {
 		this.userRepository = userRepository;
 		this.userPageRepository = userPageRepository;
 		this.passwordEncoder = passwordEncoder;
 		this.webappProperties = webappProperties;
-		this.imageServiceDb = imageServiceDb;
+		this.photoServiceDb = photoServiceDb;
 	}
 
 	@Override
@@ -59,11 +57,12 @@ public class UserServiceDb implements UserService{
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         generateRCode(user);
         userRepository.save(user);
-		Image image = imageServiceDb.newDefault();
+
+/*		Photo photo = photoServiceDb.newDefault();
 		user = findUserByUsername(user.getUsername()).get();
-		user.getImages().add(image);
+		user.getPhotos().add(photo);
 //		user.s(image);
-		update(user);
+		update(user);*/
     }
 
     @Override
@@ -198,11 +197,11 @@ public class UserServiceDb implements UserService{
 					+ multipartFile.getOriginalFilename());
 			logger.info(String.format("fullpath: %s", fullPath));
 			Files.write(fullPath, bytes);
-			Image image = new Image();
-			image.setPath(fullPath.toString());
-			image.setProfile(true);
-			imageServiceDb.save(image);
-			user.getImages().add(image);
+			Photo photo = new Photo();
+			photo.setPath(fullPath.toString());
+			photo.setProfile(true);
+			photoServiceDb.save(photo);
+			user.getPhotos().add(photo);
 //			user.setImgpro(image);
 			update(user);
 		}

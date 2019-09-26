@@ -49,7 +49,7 @@
 					<div class="card procard">
 						<div class="procard-img-cont card-colored-4">
 <!--							<img src="/images/default/cvpic.png" class="proimg">-->
-							<img class="proimg" th:src="${user.images[user.images.size() - 1]}">
+							<img class="proimg" th:src="${user.photos[user.photos.size() - 1].path}">
 						</div>
 						<div class="card-colored-4 procard-row procard-bar">
 						</div>
@@ -91,8 +91,8 @@
 
 						<div class="procard-row">
 							<div class="procard-label">
-								<p class="procard-label-txt-l procard-label-txt"> Images </p>
-								<p class="procard-label-txt-r procard-label-txt" th:text="${user.images.size()}">
+								<p class="procard-label-txt-l procard-label-txt"> Photos </p>
+								<p class="procard-label-txt-r procard-label-txt" th:text="${user.photos.size()}">
 								</p>
 							</div>
 						</div>

@@ -3,14 +3,12 @@ package xbc.jb.socialvg.refinv.domain;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Length;
-import org.hibernate.validator.constraints.UniqueElements;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
 import java.util.*;
 
 /**
@@ -44,9 +42,9 @@ public class User implements UserDetails {
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(
             joinColumns = @JoinColumn(name = "USER_ID"),
-            inverseJoinColumns = @JoinColumn(name = "IMAGE_ID")
+            inverseJoinColumns = @JoinColumn(name = "PHOTO_ID")
     )
-    private Set<Image> images;
+    private Set<Photo> photos;
 
 /*    @JoinColumn(name = "image_id")
     private Image image;*/
@@ -177,12 +175,12 @@ public class User implements UserDetails {
         this.iId = iId;
     }
 
-    public Set<Image> getImages() {
-        return images;
+    public Set<Photo> getPhotos() {
+        return photos;
     }
 
-    public void setImages(Set<Image> images) {
-        this.images = images;
+    public void setPhotos(Set<Photo> photos) {
+        this.photos = photos;
     }
 
 /*    public Image getImage() {

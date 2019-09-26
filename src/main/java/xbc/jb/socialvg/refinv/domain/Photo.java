@@ -11,9 +11,9 @@ import javax.validation.constraints.NotEmpty;
 @Component
 @Data // lombok
 @Entity
-@Table(name = "image")
+//@Table(name = "photo")
 @NoArgsConstructor
-public class Image {
+public class Photo {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,7 +22,7 @@ public class Image {
 	@NotEmpty
 	private String path;
 
-	private boolean Profile;
+	private boolean profile;
 
 	public String getPath() {
 		return path;
@@ -33,10 +33,10 @@ public class Image {
 	}
 
 	public boolean getProfile() {
-		return Profile;
+		return profile;
 	}
 
 	public void setProfile(boolean profile) {
-		Profile = profile;
+		profile = profile;
 	}
 }

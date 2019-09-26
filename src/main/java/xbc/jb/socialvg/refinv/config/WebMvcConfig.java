@@ -17,11 +17,11 @@ public class WebMvcConfig implements WebMvcConfigurer {
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		// Register resource handler for CSS and JS
-		registry.addResourceHandler("/css/**", "/images/**", "/gallery/**")
+		registry.addResourceHandler("/css/**", "/images/**", "/**")
 				.addResourceLocations(
 						"classpath:/static/css/",
 						"classpath:/images/",
-						String.format("file:%s", webappProperties.getPath().getImageFolder()))
+						"file:/")
 		.setCachePeriod(0);
 	}
 }
