@@ -2,6 +2,7 @@ package xbc.jb.socialvg.refinv.utility;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 import xbc.jb.socialvg.refinv.domain.Photo;
 import xbc.jb.socialvg.refinv.domain.User;
@@ -14,11 +15,16 @@ import xbc.jb.socialvg.refinv.service.UserServiceDb;
 @Component
 public class InitializerDb implements CommandLineRunner {
 
-	@Autowired
+
 	private UserServiceDb userServiceDb;
 
-	@Autowired
 	private PhotoServiceDb photoServiceDb;
+
+	@Autowired
+	public InitializerDb(@Lazy UserServiceDb userServiceDb, PhotoServiceDb photoServiceDb) {
+		this.userServiceDb = userServiceDb;
+		this.photoServiceDb = photoServiceDb;
+	}
 
 	@Override
 	public void run(String... args) throws Exception {
