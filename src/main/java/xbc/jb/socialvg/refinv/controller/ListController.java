@@ -65,6 +65,10 @@ public class ListController {
 			else if (type == 1)
 			{
 				model.addAttribute("title", "All Invited");
+				model.addAttribute("list", opUser.get().getInvited());
+				model.addAttribute("pageMax", opUser.get().getInvited().size());
+				model.addAttribute("type", type);
+				return "list";
 			}
 			else if (type == 2)
 			{
@@ -80,14 +84,11 @@ public class ListController {
 			model.addAttribute("list", userServiceDb.pageHidePassword(usersPage));
 			model.addAttribute("pageMax", pageMax);
 			model.addAttribute("type", type);
-			model.addAttribute("images", 0);
-//			model.addAttribute("images", opUser.get().getImages().size());
 		}
 		catch (Exception e) {
 			model.addAttribute("list", Collections.EMPTY_LIST);
 			model.addAttribute("pageMax", 1);
 			model.addAttribute("type", type);
-			model.addAttribute("images", -1);
 			return "list";
 		}
 		return "list";

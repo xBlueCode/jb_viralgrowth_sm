@@ -46,6 +46,12 @@ public class User implements UserDetails {
     )
     private Set<Photo> photos;
 
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinTable(
+	        joinColumns = @JoinColumn(name = "USER_ID")
+    )
+    private Set<User> invited;
+
 /*    @JoinColumn(name = "image_id")
     private Image image;*/
 

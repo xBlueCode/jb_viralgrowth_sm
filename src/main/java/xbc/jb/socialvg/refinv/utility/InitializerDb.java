@@ -44,5 +44,8 @@ public class InitializerDb implements CommandLineRunner {
 				System.out.println(lastRcode);
 			lastRcode = user.getrCode();
 		}
+		User user1 = userServiceDb.findUserByUsername("us01").get();
+		user1.getInvited().add(userServiceDb.findUserByUsername("us03").get());
+		userServiceDb.update(user1);
 	}
 }
