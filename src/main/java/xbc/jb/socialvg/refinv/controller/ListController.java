@@ -69,7 +69,7 @@ public class ListController {
 			else if (type == 2)
 			{
 				usersPage = userServiceDb.findAllByICode(
-						opUser.get().getiCode(),
+						opUser.get().getrCode(),
 						PageRequest.of(pageN - 1, pageSize));
 				count = userServiceDb.countAllByICode(opUser.get().getiCode());
 				model.addAttribute("title", "Directly Invited");
