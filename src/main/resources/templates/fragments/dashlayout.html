@@ -1,6 +1,8 @@
 <!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
 
-<html th:fragment="dashlayout (template, menu)">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org"
+		th:fragment="dashlayout (template, menu)">
 
 <head>
 	<meta charset="utf-8"/>
@@ -65,7 +67,6 @@
 	</div>
 	<div class="elem elem-mid">
 		<div class="btn" onclick="copycode()">Share
-<!--			<div class="btn">Share</div>-->
 		</div>
 	</div>
 </div>
@@ -78,13 +79,12 @@
 	</div>
 <script>
 function copycode() {
-		/*		var rcode = document.getElementById("rcode");
-		alert("inn: " + rcode.innerText);
-    alert("val: " + rcode.innerText);
-		rcode.select();
-    document.execCommand("copy");
-    alert("Link has been copied !: " + rcode.value);*/
-		alert("Not implemented yet !");
+	try {
+		navigator.clipboard.writeText('http://localhost:8080/invite?code=' + document.getElementById('rcode').innerText);
+		alert("Congrats !\nYour Magic Link is copied successfully !")
+	} catch (err) {
+		console.error('Failed to copy: ', err);
+	}
 }
 
 function submenu_shrink(id) {
