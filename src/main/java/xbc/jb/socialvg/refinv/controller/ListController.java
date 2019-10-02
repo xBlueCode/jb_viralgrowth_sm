@@ -60,20 +60,20 @@ public class ListController {
 			if (type == 0)
 			{
 				usersPage = userServiceDb.findPage(PageRequest.of(pageN - 1, pageSize));
-				model.addAttribute("title", "All Users");
+				model.addAttribute("title", "All users");
 			}
 			else if (type == 1)
 			{
 				List<User> invitedUsers = opUser.get().getInvited();
 				usersPage = new PageImpl<>(invitedUsers);
-				model.addAttribute("title", "All Invited");
+				model.addAttribute("title", "All invitees");
 			}
 			else if (type == 2)
 			{
 				usersPage = userServiceDb.findAllByICode(
 						opUser.get().getrCode(),
 						PageRequest.of(pageN - 1, pageSize));
-				model.addAttribute("title", "Directly Invited");
+				model.addAttribute("title", "Direct invitees");
 			}
 			if (usersPage == null)
 				throw new NullPointerException();

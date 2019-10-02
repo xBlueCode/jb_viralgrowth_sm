@@ -2,6 +2,8 @@
     --width-nav-left: 192px;
     --height-nav-top: 48px;
     --color-nav-0: #2c3e50;
+    --color-nav-0-l: #415161;
+    --color-nav-0-d: #233140;
     --color-nav-1: #34495e;
     --color-nav-2: #3498db;
     --color-nav-3: #34495e;
@@ -87,18 +89,45 @@ body {
     font-size: 14px;
     color: var(--color-nav-2);
     display: block;
-    transition: background-color .4s ease;
+    transition: background-color .4s ease-in;
 }
 
 .fixnav a:hover {
     background: var(--color-nav-1);
+    cursor: pointer;
     /*background: #fff;*/
 }
 
 .fixnav a:active {
-    background: var(--color-nav-1);
+    background: var(--color-nav-2);
+    opacity: .8;
 }
 
+.submenu {
+    transition: max-height .6s ease;
+    overflow: hidden;
+    max-height: 100%;
+}
+
+.submenu a {
+    padding-left: 32px;
+    background: var(--color-nav-0-d);
+    transition: background-color .4s ease-in;
+}
+
+.submenu a:hover {
+    /*opacity: .75;*/
+    background: var(--color-nav-1);
+    /*background: #fff;*/
+}
+
+.submenu a:active {
+    /*background: var(--color-nav-2);*/
+}
+
+.submenu-shrink {
+    max-height: 0;
+}
 
 .fixnav-left .elem{
     font-size: 14px;
@@ -108,7 +137,6 @@ body {
     justify-content: space-between;
     transition: background-color .4s ease;
 }
-
 
 .fixnav-left .hoverable:hover{
     background: var(--color-nav-1);
