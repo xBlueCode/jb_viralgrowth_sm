@@ -50,17 +50,22 @@ public class UserServiceDb implements UserService{
 	@Override
     public void save(User user)
     {
-    	Optional<User> opRUser = userRepository.findUserByRCode(user.getiCode());
     	user.setScore(.0);
     	user.setInvitees(0L);
     	user.setDirect(0L);
-    	if (opRUser.isPresent())
-			updateScore(user, 1);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         generateRCode(user);
-        userRepository.save(user);
+        user = userRepository.save(user);
+		Optional<User> opRUser = userRepository.findUserByRCode(user.getiCode());
+		if (opRUser.isPresent())
+		{
+			updateScore(user, 1);
+			updateInvitedUser(user);
+			//User invitedUser = findUserByUsername(user.getUsername()).get();
+			//updateScore(invitedUser, 1);
+			//updateScore(user, user, 1);
+		}
     }
-
 
     @Override
     public void delete(User user)
@@ -119,6 +124,30 @@ public class UserServiceDb implements UserService{
 	}
 
 
+	/*
+	@Override
+	public void updateScore(User invitedUser, User invitedUser, int lev) {
+
+		if (invitedUser == null || invitedUser == null)
+			return;
+		if (invitedUser.getiCode() == null || invitedUser.getiCode() == null)
+			return;
+		System.out.format("invited: %s  <---> Interm: %s\n", invitedUser.getUsername(), invitedUser.getUsername());
+		Optional<User> opUser = userRepository.findUserByRCode(invitedUser.getiCode());
+		if (!opUser.isPresent())
+			return;
+		//opUser.get().addScore(Math.exp(-l));
+		opUser.get().addInvitee(1L);
+		if (lev == 1)
+			opUser.get().addDirect(1L);
+		opUser.get().addScore(1.0 / lev);
+		//opUser.get().getInvited().add(invitedUser);
+		//opUser.get().getInvited().addAll(invitedUser.getInvited());
+		update(opUser.get());
+		updateScore(invitedUser , findUserByUsername(opUser.get().getUsername()).get(), lev +  1);
+		System.out.println("Done");
+	}
+	 */
 	@Override
 	public void updateScore(User invitedUser, int lev) {
 
@@ -138,6 +167,24 @@ public class UserServiceDb implements UserService{
 		updateScore(opUser.get(), lev +  1);
 	}
 
+
+	@Override
+	public void updateInvitedUser(User invitedUser) {
+
+		if (invitedUser == null)
+			return;
+		User interm = invitedUser;
+		while (true)
+		{
+			Optional<User> opUser = userRepository.findUserByRCode(interm.getiCode());
+			if (!opUser.isPresent())
+				break;
+			User referral = opUser.get();
+			referral.getInvited().add(invitedUser);
+			referral = userRepository.saveAndFlush(referral);
+			interm = referral;
+		}
+	}
 
 	@Override
 	public long count() {

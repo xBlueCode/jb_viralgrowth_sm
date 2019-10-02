@@ -30,6 +30,9 @@ public interface UserService extends UserDetailsService {
 
 	void updateScore(User invitedUser, int lev);
 
+
+	void updateInvitedUser(User invitedUser);
+
 	/**
 	 * Count all the users.
 	 * @return The count of all users.

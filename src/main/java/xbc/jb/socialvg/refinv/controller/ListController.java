@@ -2,6 +2,7 @@ package xbc.jb.socialvg.refinv.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +15,7 @@ import xbc.jb.socialvg.refinv.properties.WebappProperties;
 import xbc.jb.socialvg.refinv.service.UserServiceDb;
 
 import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -52,35 +54,30 @@ public class ListController {
 			return "redirect:/";
 		opUser.get().setPassword("");
 		model.addAttribute("currentUser", opUser.get());
-		long count = 0;
 		try{
 			int pageSize = webappProperties.getPagination().getPageSize();
 			Page<User> usersPage = null;
 			if (type == 0)
 			{
 				usersPage = userServiceDb.findPage(PageRequest.of(pageN - 1, pageSize));
-				count = userServiceDb.count();
 				model.addAttribute("title", "All Users");
 			}
 			else if (type == 1)
 			{
+				List<User> invitedUsers = opUser.get().getInvited();
+				usersPage = new PageImpl<>(invitedUsers);
 				model.addAttribute("title", "All Invited");
-				model.addAttribute("list", opUser.get().getInvited());
-				model.addAttribute("pageMax", opUser.get().getInvited().size());
-				model.addAttribute("type", type);
-				return "list";
 			}
 			else if (type == 2)
 			{
 				usersPage = userServiceDb.findAllByICode(
 						opUser.get().getrCode(),
 						PageRequest.of(pageN - 1, pageSize));
-				count = userServiceDb.countAllByICode(opUser.get().getiCode());
 				model.addAttribute("title", "Directly Invited");
 			}
 			if (usersPage == null)
 				throw new NullPointerException();
-			long pageMax = count / pageSize + ((count % pageSize) == 0 ? 0 : 1);
+			long pageMax = usersPage.getTotalPages();
 			model.addAttribute("list", userServiceDb.pageHidePassword(usersPage));
 			model.addAttribute("pageMax", pageMax);
 			model.addAttribute("type", type);

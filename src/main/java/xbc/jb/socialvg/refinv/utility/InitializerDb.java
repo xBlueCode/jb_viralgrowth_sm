@@ -30,22 +30,19 @@ public class InitializerDb implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 
 		String lastRcode = new String("");
-		for (int i = 0; i < 20; i++)
+		for (int i = 1; i < 20; i++)
 		{
+//			System.out.format("init: %d\n", i);
 			User user = new User();
 			user.setUsername(String.format("us%02d", i));
 			user.setPassword(String.format("pass%d", i));
 			if (i > 0)
 				user.setiCode(lastRcode);
 			user.setEmail(String.format("user%d@gmail.com", i));
-//			user.setInvitedUsers(Collections.EMPTY_SET);
 			userServiceDb.save(user);
 			if (i == 10)
 				System.out.println(lastRcode);
 			lastRcode = user.getrCode();
 		}
-		User user1 = userServiceDb.findUserByUsername("us01").get();
-		user1.getInvited().add(userServiceDb.findUserByUsername("us03").get());
-		userServiceDb.update(user1);
 	}
 }
