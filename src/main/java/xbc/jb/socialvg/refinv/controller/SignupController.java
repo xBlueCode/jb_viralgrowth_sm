@@ -50,11 +50,13 @@ public class SignupController {
 			if (bindingResult.hasErrors())
 				return "signup";
 
-			User user = new User();
-			user.setUsername(validUuser.getUsername());
-			user.setPassword(validUuser.getPassword());
-			user.setEmail(validUuser.getEmail());
-			userServiceDb.save(user);
+//			User user = new User();
+//			user.setUsername(validUuser.getUsername());
+//			user.setPassword(validUuser.getPassword());
+//			user.setEmail(validUuser.getEmail());
+//			user.setrCode(validUuser.getrCode());
+			System.out.format("rCode: %s\n", validUuser.getrCode());
+			userServiceDb.save(validUuser);
 			return "redirect:/signin";
 		}
         catch (Exception e)
