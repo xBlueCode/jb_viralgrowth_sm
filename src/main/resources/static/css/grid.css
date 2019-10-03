@@ -20,7 +20,7 @@ header {
 .logo{
 	display: block;
     flex: 0 1 140px;
-	
+
 	height: auto;
 	text-decoration: none;
 	font-size: 28px;
@@ -29,10 +29,13 @@ header {
 	/*margin: 0 0 0 32px;*/
 	align-self: center;
 	text-shadow: 0 0 .5px black;
+	text-align: center;
+	margin: 16px 0px;
 /*	border-right: 1px solid rgba(52, 73, 94,1.0);*/
 	/* text-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23); */
 	transition: color .4s ease;
 }
+
 .logo:hover{
 	color: #fff;
 	cursor: pointer;

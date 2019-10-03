@@ -17,6 +17,10 @@
 <body>
 <div class="fixnav fixnav-left">
 
+	<div class="logo">
+		xBlueCode
+	</div>
+
 	<div class="img-cont" th:if="${currentUser.photos.size() == 0}">
 		<img th:src="@{/images/default/cvpic.png}">
 	</div>
@@ -30,10 +34,12 @@
 	<a href="/dashboard">Dashboard</a>
 	<a onclick="submenu_shrink('submenu_list')">Users</a>
 
-	<div id = "submenu_list" class="submenu submenu-shrink">
-		<a href="/list?type=0&page=1">All users</a>
-		<a href="/list?type=1&page=1">All invitees</a>
-		<a href="/list?type=2&page=1">Direct invitees</a>
+	<div style="max-height: 120px">
+		<div id = "submenu_list" class="submenu submenu-shrink">
+			<a href="/list?type=0&page=1">All users</a>
+			<a href="/list?type=1&page=1">All invitees</a>
+			<a href="/list?type=2&page=1">Direct invitees</a>
+		</div>
 	</div>
 
 	<a href="/signout">Sign out</a>

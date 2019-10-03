@@ -13,7 +13,6 @@
 * {
     margin: 0;
     padding: 0;
-    /*transition: all 1s ease;*/
 }
 
 html,
@@ -34,6 +33,27 @@ body {
     position: relative;
 }
 
+.logo{
+    display: block;
+    flex: 0 1 140px;
+
+    height: calc(8px + var(--height-nav-top) - 16px);
+    text-decoration: none;
+    font-size: 24px;
+    color: rgba(52, 152, 219,1.0);
+    font-weight: bolder;
+    align-self: center;
+    text-shadow: 0 0 .5px black;
+    text-align: center;
+    padding-top: 16px;
+    transition: color .4s ease;
+}
+
+.logo:hover{
+    color: #fff;
+    cursor: pointer;
+}
+
 .fixnav {
     position: fixed;
     z-index: 1;
@@ -46,7 +66,8 @@ body {
 .fixnav-left {
     height: 100%;
     width: var(--width-nav-left);
-    padding-top: calc(8px + var(--height-nav-top));
+    /*padding-top: calc(8px + var(--height-nav-top));*/
+    padding-top: 0;
     box-shadow: 3px 0 5px rgba(0,0,0,0.16), 3px 0 5px rgba(0,0,0,0.23);
 }
 
@@ -106,7 +127,7 @@ body {
 .submenu {
     transition: max-height .6s ease;
     overflow: hidden;
-    max-height: 100%;
+    max-height: inherit;
 }
 
 .submenu a {
