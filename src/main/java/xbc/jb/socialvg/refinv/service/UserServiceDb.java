@@ -174,16 +174,24 @@ public class UserServiceDb implements UserService{
 		if (invitedUser == null)
 			return;
 		User interm = invitedUser;
+		List<User> referrers = new ArrayList<>();
 		while (true)
 		{
 			Optional<User> opUser = userRepository.findUserByRCode(interm.getiCode());
 			if (!opUser.isPresent())
 				break;
-			User referral = opUser.get();
-			referral.getInvited().add(invitedUser);
-			referral = userRepository.saveAndFlush(referral);
-			interm = referral;
+			User referrer = opUser.get();
+			referrer.getInvited().add(invitedUser);
+			//invitedUser.getReferrers().add(referrer);
+			referrers.add(referrer);
+			referrer = userRepository.saveAndFlush(referrer);
+			//invitedUser.getReferrers().add(referrer);
+			//invitedUser = userRepository.saveAndFlush(invitedUser);
+			interm = referrer;
 		}
+		invitedUser.setReferrers(referrers);
+//		invitedUser.getReferrers().addAll(referrers);
+		userRepository.save(invitedUser);
 	}
 
 	@Override

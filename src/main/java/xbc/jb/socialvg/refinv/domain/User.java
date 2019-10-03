@@ -52,6 +52,12 @@ public class User implements UserDetails {
     )
     private List<User> invited;
 
+    @ManyToMany(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
+    @JoinTable(
+            joinColumns = @JoinColumn(name = "USER_ID")
+    )
+    private List<User> referrers;
+
 /*    @JoinColumn(name = "image_id")
     private Image image;*/
 
@@ -188,6 +194,8 @@ public class User implements UserDetails {
     public void setPhotos(Set<Photo> photos) {
         this.photos = photos;
     }
+
+
 
 /*    public Image getImage() {
         return image;

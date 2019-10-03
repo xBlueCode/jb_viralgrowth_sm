@@ -75,6 +75,18 @@ public class ListController {
 						PageRequest.of(pageN - 1, pageSize));
 				model.addAttribute("title", "Direct invitees");
 			}
+			else if (type == 3)
+			{
+				usersPage = userServiceDb.findAllByRCode(opUser.get().getiCode(),
+						PageRequest.of(pageN - 1, pageSize));
+				model.addAttribute("title", "Direct referrer");
+			}
+			else if (type == 4)
+			{
+				List<User> referrers = opUser.get().getReferrers();
+				usersPage = new PageImpl<>(referrers);
+				model.addAttribute("title", "All referrers");
+			}
 			if (usersPage == null)
 				throw new NullPointerException();
 			long pageMax = usersPage.getTotalPages();
