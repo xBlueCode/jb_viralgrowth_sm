@@ -61,9 +61,6 @@ public class UserServiceDb implements UserService{
 		{
 			updateScore(user, 1);
 			updateInvitedUser(user);
-			//User invitedUser = findUserByUsername(user.getUsername()).get();
-			//updateScore(invitedUser, 1);
-			//updateScore(user, user, 1);
 		}
     }
 
@@ -100,7 +97,6 @@ public class UserServiceDb implements UserService{
             throw new UsernameNotFoundException(username);
     }
 
-
 	@Override
 	public List<User> findAll() {
 		return userRepository.findAll();
@@ -123,31 +119,6 @@ public class UserServiceDb implements UserService{
 		return page;
 	}
 
-
-	/*
-	@Override
-	public void updateScore(User invitedUser, User invitedUser, int lev) {
-
-		if (invitedUser == null || invitedUser == null)
-			return;
-		if (invitedUser.getiCode() == null || invitedUser.getiCode() == null)
-			return;
-		System.out.format("invited: %s  <---> Interm: %s\n", invitedUser.getUsername(), invitedUser.getUsername());
-		Optional<User> opUser = userRepository.findUserByRCode(invitedUser.getiCode());
-		if (!opUser.isPresent())
-			return;
-		//opUser.get().addScore(Math.exp(-l));
-		opUser.get().addInvitee(1L);
-		if (lev == 1)
-			opUser.get().addDirect(1L);
-		opUser.get().addScore(1.0 / lev);
-		//opUser.get().getInvited().add(invitedUser);
-		//opUser.get().getInvited().addAll(invitedUser.getInvited());
-		update(opUser.get());
-		updateScore(invitedUser , findUserByUsername(opUser.get().getUsername()).get(), lev +  1);
-		System.out.println("Done");
-	}
-	 */
 	@Override
 	public void updateScore(User invitedUser, int lev) {
 
@@ -166,7 +137,6 @@ public class UserServiceDb implements UserService{
 		update(opUser.get());
 		updateScore(opUser.get(), lev +  1);
 	}
-
 
 	@Override
 	public void updateInvitedUser(User invitedUser) {
@@ -246,8 +216,6 @@ public class UserServiceDb implements UserService{
 		page.forEach(user -> user.setPassword(""));
 		return page;
 	}
-
-
 
 	@Override
 	public void uploadImage(User user, MultipartFile multipartFile) {

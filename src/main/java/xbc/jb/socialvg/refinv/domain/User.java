@@ -195,9 +195,7 @@ public class User implements UserDetails {
         this.photos = photos;
     }
 
-
-
-/*    public Image getImage() {
+    /*    public Image getImage() {
         return image;
     }
 

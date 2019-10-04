@@ -90,7 +90,7 @@
 function copycode() {
 	try {
 		navigator.clipboard.writeText('http://localhost:8080/invite?code=' + document.getElementById('rcode').innerText);
-		alert("Congrats !\nYour Magic Link is copied successfully !")
+		alert("Congrats !\nYour Magic Link is copied successfully !");
 	} catch (err) {
 		console.error('Failed to copy: ', err);
 	}
